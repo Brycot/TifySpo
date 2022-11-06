@@ -31,10 +31,19 @@ export const Svg = styled.svg`
     fill: currentcolor;
 `;
 export const TitleSong = styled.a`
+    cursor: pointer;
     font-size: 0.875rem;
+    &:hover {
+        color: #eeee;
+        text-decoration: underline;
+    }
 `;
 export const Artist = styled.a`
     font-size: 0.75rem;
     color: #b3b3b3;
     text-decoration: none;
+    &:hover {
+        color: #eeee;
+        text-decoration: underline;
+    }
 `;

@@ -1,12 +1,12 @@
 import { useState } from "react";
-import Player from "./components/FooterCurrentSong";
+import PlayingBar from "./components/PlayingBar";
 import "./App.css";
 
 function App() {
     return (
         <main className="App">
             <p className="read-the-docs">tifyspo</p>
-            <Player />
+            <PlayingBar />
         </main>
     );
 }

@@ -6,6 +6,6 @@ export const Footer = styled.footer`
     background-color: #181818;
     border-top: 1px solid #282828;
     display: flex;
+    align-items: center;
     padding: 0 16px;
 `;
-

@@ -1,12 +1,14 @@
 import SongInfoPlayer from "../CurrentSongInfo/CurrentSongInfo";
-import { Footer } from "./FooterCurrentSong.styled";
+import Player from "../Player";
+import { Footer } from "./PlayingBar.styled";
 
-function Player() {
+function PlayingBar() {
     return (
         <Footer>
             <SongInfoPlayer />
+            <Player />
         </Footer>
     );
 }
 
-export default Player;
+export default PlayingBar;
