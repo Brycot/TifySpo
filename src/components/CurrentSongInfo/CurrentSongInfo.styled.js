@@ -9,6 +9,8 @@ export const DivMusicInfo = styled.section`
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    width: 30%;
+    min-width: 180px;
     & .SongText {
         width: 287px;
         height: 40px;

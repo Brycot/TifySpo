@@ -1,8 +1,15 @@
 import React from "react";
-import { PlayerControlButtons, Button, Svg, PlayBackbar, PlaybackNumber } from "./Player.styled";
+import {
+    PlayerSection,
+    PlayerControlButtons,
+    Button,
+    Svg,
+    PlayBackbar,
+    PlaybackNumber,
+} from "./Player.styled";
 function Player() {
     return (
-        <section>
+        <PlayerSection>
             <PlayerControlButtons>
                 <div className="playerControls-left">
                     <Button>
@@ -29,7 +36,13 @@ function Player() {
                 </div>
 
                 <Button playPause>
-                    <Svg playPause role="img" height="16" width="16" viewBox="0 0 16 16">
+                    <Svg
+                        playPause
+                        role="img"
+                        height="16"
+                        width="16"
+                        viewBox="0 0 16 16"
+                    >
                         <path d="M2.7 1a.7.7 0 00-.7.7v12.6a.7.7 0 00.7.7h2.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7H2.7zm8 0a.7.7 0 00-.7.7v12.6a.7.7 0 00.7.7h2.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7h-2.6z"></path>
                     </Svg>
                 </Button>
@@ -58,10 +71,11 @@ function Player() {
                 </div>
             </PlayerControlButtons>
             <PlayBackbar>
-              <PlaybackNumber>1:30</PlaybackNumber>
-              <PlaybackNumber>4:00</PlaybackNumber>
+                <PlaybackNumber>1:30</PlaybackNumber>
+                <input type="range" min="0" max="10" step="0.01" />
+                <PlaybackNumber>4:00</PlaybackNumber>
             </PlayBackbar>
-        </section>
+        </PlayerSection>
     );
 }
 

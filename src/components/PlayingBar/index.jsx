@@ -1,5 +1,6 @@
 import SongInfoPlayer from "../CurrentSongInfo/CurrentSongInfo";
 import Player from "../Player";
+import AddonsControl from "../AddonsControl";
 import { Footer } from "./PlayingBar.styled";
 
 function PlayingBar() {
@@ -7,6 +8,7 @@ function PlayingBar() {
         <Footer>
             <SongInfoPlayer />
             <Player />
+            <AddonsControl/>
         </Footer>
     );
 }
