@@ -7,11 +7,23 @@ import {
     PlayBackbar,
     PlaybackNumber,
 } from "./Player.styled";
+import useAuth from "../../hooks/useAuth";
+
+
 function Player() {
+
+    const { login, handleAuthentication, getAuthToken } = useAuth();
+
+    const handleLogin = async() => {
+        login();
+        await handleAuthentication();
+        await getAuthToken()
+    };
+
     return (
         <PlayerSection>
             <PlayerControlButtons>
-                <div className="playerControls-left">
+                <div className="playerControls-left" >
                     <Button>
                         <Svg
                             role="img"
@@ -35,7 +47,7 @@ function Player() {
                     </Button>
                 </div>
 
-                <Button playPause>
+                <Button playPause onClick={() => handleLogin()}>
                     <Svg
                         playPause
                         role="img"
@@ -70,11 +82,7 @@ function Player() {
                     </Button>
                 </div>
             </PlayerControlButtons>
-            <PlayBackbar>
-                <PlaybackNumber>1:30</PlaybackNumber>
-                <input type="range" min="0" max="10" step="0.01" />
-                <PlaybackNumber>4:00</PlaybackNumber>
-            </PlayBackbar>
+
         </PlayerSection>
     );
 }

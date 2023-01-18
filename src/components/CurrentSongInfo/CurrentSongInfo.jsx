@@ -8,6 +8,7 @@ import {
 } from "./CurrentSongInfo.styled";
 
 function SongInfoPlayer() {
+    
     return (
         <DivMusicInfo>
             <Img
