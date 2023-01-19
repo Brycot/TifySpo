@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-
+import axios from "axios";
+import { useSpotify } from "../hooks/useSpotify";
 const track = {
     name: "",
     album: {
@@ -9,11 +10,20 @@ const track = {
 };
 
 function SdkSpotify() {
+    const { toggleMusic } = useSpotify();
+    
     const token = localStorage.getItem("access_token");
     const [is_paused, setPaused] = useState(false);
     const [is_active, setActive] = useState(false);
     const [player, setPlayer] = useState(undefined);
     const [current_track, setTrack] = useState(track);
+
+    const handlePause = async () => {
+        // player.togglePlay().then(() => {
+        //     console.log("Toggled playback!");
+        // });
+        await player.togglePlay();
+    };
 
     useEffect(() => {
         const script = document.createElement("script");
@@ -23,7 +33,7 @@ function SdkSpotify() {
         document.body.appendChild(script);
 
         window.onSpotifyWebPlaybackSDKReady = () => {
-            const player = new window.Spotify.Player({
+            const player = new Spotify.Player({
                 name: "TifySpo",
                 getOAuthToken: (cb) => {
                     cb(token);
@@ -41,7 +51,7 @@ function SdkSpotify() {
                 console.log("Device ID has gone offline", device_id);
             });
 
-            player.addListener("player_state_changed", (state) => {
+            player.addListener("player_state_changed", async (state) => {
                 if (!state) {
                     return;
                 }
@@ -49,12 +59,22 @@ function SdkSpotify() {
                 setTrack(state.track_window.current_track);
                 setPaused(state.paused);
 
-                player.getCurrentState().then((state) => {
-                    !state ? setActive(false) : setActive(true);
-                });
+                // player.getCurrentState().then((state) => {
+                //     !state ? setActive(false) : setActive(true);
+                // });
+                const currentState = await player.getCurrentState();
+                !state ? setActive(false) : setActive(true);
+
+                console.log(currentState);
             });
 
-            player.connect();
+            player.connect().then((success) => {
+                if (success) {
+                    console.log(
+                        "The Web Playback SDK successfully connected to Spotify!"
+                    );
+                }
+            });
         };
     }, []);
 
@@ -103,7 +123,8 @@ function SdkSpotify() {
                             <button
                                 className="btn-spotify"
                                 onClick={() => {
-                                    player.togglePlay();
+                                    // player.togglePlay();
+                                    toggleMusic();
                                 }}
                             >
                                 {is_paused ? "PLAY" : "PAUSE"}
