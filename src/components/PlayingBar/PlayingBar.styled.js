@@ -9,4 +9,5 @@ export const Footer = styled.footer`
     justify-content: space-between;
     align-items: center;
     padding: 0 16px;
+    grid-area: now-playing-bar;
 `;

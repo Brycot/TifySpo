@@ -1,16 +1,23 @@
-import { useState } from "react";
-import PlayingBar from "./components/PlayingBar";
-import SdkSpotify from "./components/sdkspotify";
 import "./App.css";
+import Layout from "./components/layout";
+import Home from "./views/Home";
+import Login from "./views/LogIn";
 
 function App() {
-    return (
-        <main className="App">
-            <SdkSpotify />
-            <p className="read-the-docs">tifyspo</p>
-            <PlayingBar />
-        </main>
-    );
+    const spotifyToken = localStorage.getItem("access_token");
+
+    if(!spotifyToken) {
+        return (
+            <Login />
+        )
+    }
+    if(spotifyToken) {
+        return (
+            <Layout>
+                <Home />
+            </Layout>
+        )
+    }
 }
 
 export default App;
