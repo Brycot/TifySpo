@@ -49,6 +49,22 @@ export const Svg = styled.svg`
         css`
             color: #121212;
         `};
+    ${(props) => {
+        switch (props.colorState) {
+            case "verde":
+                return css`
+                    color: #1ed760;
+                `;
+                break;
+            case "gris":
+                return css`
+                    color: #bababa;
+                `;
+                break;
+            default:
+                break;
+        }
+    }};
 `;
 
 export const PlayBackbar = styled.div`

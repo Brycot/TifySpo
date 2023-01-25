@@ -116,7 +116,6 @@ function PlayingBar() {
                         shuffle_state,
                     } = data;
                     setCurrentTrack({ ...item, play: is_playing });
-                    console.log(currentTrack);
 
                     setPlaybackState((state) => ({
                         ...state,
@@ -135,7 +134,6 @@ function PlayingBar() {
         };
         getFunc();
     };
-
     useEffect(() => {
         // initialize script
         loadScript();
@@ -148,11 +146,12 @@ function PlayingBar() {
         // eslint-disable-next-line
     }, []);
     return (
-        <Footer onClick={() => {
-            console.log(currentTrack)
-        }}>
+        <Footer onClick={() => {}}>
             <SongInfoPlayer currentTrack={currentTrack} />
-            <Player />
+            <Player
+                playbackState={playbackState}
+                setPlaybackState={setPlaybackState}
+            />
             <AddonsControl />
         </Footer>
     );

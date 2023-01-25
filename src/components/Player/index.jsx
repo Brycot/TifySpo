@@ -7,16 +7,35 @@ import {
     PlayBackbar,
     PlaybackNumber,
 } from "./Player.styled";
+import { useSpotify } from "../../hooks/useSpotify";
 
+function Player({ playbackState, setPlaybackState }) {
 
-function Player() {
+    const { toggleMusic, toggleShuffle, skipPrevious, skipNext, toggleRepeat } =
+        useSpotify();
+    const handlePlay = () => {
+        toggleMusic(playbackState, setPlaybackState);
+    };
+    const handleShuffle = () => {
+        toggleShuffle(playbackState, setPlaybackState);
+    };
+    const handleRepeat = () => {
+        toggleRepeat(playbackState, setPlaybackState);
+    };
+    const handlePrevious = () => {
+        skipPrevious(playbackState, setPlaybackState);
+    };
+    const handleNext = () => {
+        skipNext(playbackState, setPlaybackState);
+    };
 
     return (
         <PlayerSection>
             <PlayerControlButtons>
                 <div className="playerControls-left">
-                    <Button>
+                    <Button onClick={handleShuffle}>
                         <Svg
+                            colorState={playbackState.shuffle ? "verde" : "gris"}
                             role="img"
                             height="16"
                             width="16"
@@ -26,7 +45,7 @@ function Player() {
                             <path d="M7.5 10.723l.98-1.167.957 1.14a2.25 2.25 0 001.724.804h1.947l-1.017-1.018a.75.75 0 111.06-1.06l2.829 2.828-2.829 2.828a.75.75 0 11-1.06-1.06L13.109 13H11.16a3.75 3.75 0 01-2.873-1.34l-.787-.938z"></path>
                         </Svg>
                     </Button>
-                    <Button>
+                    <Button onClick={handlePrevious}>
                         <Svg
                             role="img"
                             height="16"
@@ -40,21 +59,38 @@ function Player() {
 
                 <Button
                     playPause
-                    
+                    onClick={() => {
+                        handlePlay();
+                    }}
                 >
-                    <Svg
-                        playPause
-                        role="img"
-                        height="16"
-                        width="16"
-                        viewBox="0 0 16 16"
-                    >
-                        <path d="M2.7 1a.7.7 0 00-.7.7v12.6a.7.7 0 00.7.7h2.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7H2.7zm8 0a.7.7 0 00-.7.7v12.6a.7.7 0 00.7.7h2.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7h-2.6z"></path>
-                    </Svg>
+                    {playbackState.play ? (
+                        <Svg
+                            playPause
+                            role="img"
+                            height="16"
+                            width="16"
+                            viewBox="0 0 16 16"
+                        >
+                            <path d="M2.7 1a.7.7 0 00-.7.7v12.6a.7.7 0 00.7.7h2.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7H2.7zm8 0a.7.7 0 00-.7.7v12.6a.7.7 0 00.7.7h2.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7h-2.6z"></path>
+                        </Svg>
+                    ) : (
+                        <Svg
+                            playPause
+                            role="img"
+                            height="16"
+                            width="16"
+                            aria-hidden="true"
+                            viewBox="0 0 16 16"
+                            data-encore-id="icon"
+                            className="Svg-sc-ytk21e-0 uPxdw"
+                        >
+                            <path d="M3 1.713a.7.7 0 011.05-.607l10.89 6.288a.7.7 0 010 1.212L4.05 14.894A.7.7 0 013 14.288V1.713z"></path>
+                        </Svg>
+                    )}
                 </Button>
 
                 <div className="playerControls-right">
-                    <Button>
+                    <Button onClick={handleNext}>
                         <Svg
                             role="img"
                             height="16"
@@ -64,8 +100,9 @@ function Player() {
                             <path d="M12.7 1a.7.7 0 00-.7.7v5.15L2.05 1.107A.7.7 0 001 1.712v12.575a.7.7 0 001.05.607L12 9.149V14.3a.7.7 0 00.7.7h1.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7h-1.6z"></path>
                         </Svg>
                     </Button>
-                    <Button>
+                    <Button onClick={handleRepeat}>
                         <Svg
+                            colorState={playbackState.repeat ? "verde" : "gris"}
                             role="img"
                             height="16"
                             width="16"

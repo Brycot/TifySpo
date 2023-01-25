@@ -1,51 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
-
-const updateWithToken = (enpoint, token, data) => {
-    let source = axios.CancelToken.source();
-
-    const request = async () => {
-        let result;
-        const options = {
-            url: enpoint,
-            method: "PUT",
-            headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
-            },
-            data,
-            cancelToken: source.token,
-        };
-        try {
-            result = await axios(options);
-        } catch (error) {
-            if (axios.isCancel(error)) return;
-            return error;
-        }
-        return result;
-    };
-
-    return request;
-};
-const updateState = () => {
-    if (!fireyPlayer.current) {
-        getPlayerInfo();
-    }
-};
+import useRequest from "./useRequest";
 
 export const useSpotify = () => {
     const spotifyToken = localStorage.getItem("access_token");
-
-    const [playbackState, setPlaybackState] = useState({
-        loading: false,
-        play: false,
-        shuffle: false,
-        repeat: false,
-        progress: 0,
-        duration: 0,
-    });
-
-    const toggleMusic = (_) => {
+    const { updateWithToken, postWithToken } = useRequest();
+    // reproducir musica
+    const toggleMusic = (playbackState, setPlaybackState) => {
         const request = updateWithToken(
             `${
                 playbackState.play
@@ -54,7 +15,7 @@ export const useSpotify = () => {
             }`,
             spotifyToken
         );
-        const requestFunc = async (_) => {
+        const requestFunc = async () => {
             try {
                 const response = await request();
                 if (response.status === 202) {
@@ -62,10 +23,8 @@ export const useSpotify = () => {
                         ...state,
                         play: !state.play,
                     }));
-                    // updateState();
                     console.log("bien", response);
                 } else {
-                    // setFlash('Opps, something went wrong!');
                     console.log("mal", response);
                     return;
                 }
@@ -77,7 +36,112 @@ export const useSpotify = () => {
         requestFunc();
     };
 
+    // activar/ desactivar aleatorio
+    const toggleShuffle = (playbackState, setPlaybackState) => {
+        const request = updateWithToken(
+            `https://api.spotify.com/v1/me/player/shuffle?state=${!playbackState.shuffle}`,
+            spotifyToken
+        );
+        const requestFunc = async (_) => {
+            try {
+                const response = await request();
+                if (response.status === 202) { 
+                    setPlaybackState((state) => ({
+                        ...state,
+                        shuffle: !state.shuffle,
+                    }));
+                    console.log(playbackState);
+                } else {
+                    console.log("Opps, something went wrong!");
+                    return;
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        requestFunc();
+    };
+
+    // canción anterior
+    const skipPrevious = () => {
+        const request = postWithToken(
+            "https://api.spotify.com/v1/me/player/previous",
+            spotifyToken
+        );
+        const requestFunc = async (_) => {
+            try {
+                const response = await request();
+                if (response.status !== 204) {
+                    console.log("Opps, something went wrong!");
+                    return;
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        requestFunc();
+    };
+
+    // cancion siguiente
+    const skipNext = () => {
+        const request = postWithToken(
+            "https://api.spotify.com/v1/me/player/next",
+            spotifyToken
+        );
+        const requestFunc = async (_) => {
+            try {
+                const response = await request();
+                if (response.status !== 204) {
+                    console.log("Opps, something went wrong!");
+                    return;
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        requestFunc();
+    };
+
+    // modo de repetición
+    const toggleRepeat = (playbackState, setPlaybackState) => {
+        const request = updateWithToken(
+            `https://api.spotify.com/v1/me/player/repeat?state=${
+                playbackState.repeat ? `off` : `track`
+            }`,
+            spotifyToken
+        );
+        const requestFunc = async (_) => {
+            try {
+                const response = await request();
+                if (response.status === 202) {
+                    setPlaybackState((state) => ({
+                        ...state,
+                        repeat: !state.repeat,
+                    }));
+                    console.log(
+                        `Repeat mode ${
+                            playbackState.repeat ? "disabled" : "enabled"
+                        }`
+                    );
+                } else {
+                    console.log("Opps, something went wrong!");
+                    return;
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        requestFunc();
+    };
     return {
         toggleMusic,
+        toggleShuffle,
+        skipPrevious,
+        skipNext,
+        toggleRepeat,
     };
 };
