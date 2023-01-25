@@ -134,6 +134,8 @@ function PlayingBar() {
         };
         getFunc();
     };
+
+
     useEffect(() => {
         // initialize script
         loadScript();

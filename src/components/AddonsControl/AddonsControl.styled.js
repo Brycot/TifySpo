@@ -29,10 +29,7 @@ export const Button = styled.button`
 export const Svg = styled.svg`
     color: #bababa;
     fill: currentcolor;
-
-    ${(props) =>
-        props.playPause &&
-        css`
-            color: #121212;
-        `};
+    &:hover {
+        color: white;
+    }
 `;

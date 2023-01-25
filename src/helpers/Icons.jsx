@@ -5,6 +5,8 @@ import {
     DivFavs,
     DivCaps,
     DivPlayPauseSong,
+    ActualContainer,
+    ActualSoundContainer,
 } from "./Icons.styled";
 
 export const Logo = () => (
@@ -185,4 +187,53 @@ export const PlayButtonSong = () => (
             <path d="M7.05 3.606l13.49 7.788a.7.7 0 010 1.212L7.05 20.394A.7.7 0 016 19.788V4.212a.7.7 0 011.05-.606z"></path>
         </svg>
     </DivPlayPauseSong>
+);
+
+export const ActualDeviceIcon = () => (
+    <ActualContainer>
+        <svg
+            role="presentation"
+            height="32"
+            width="32"
+            aria-hidden="true"
+            class="Svg-sc-ytk21e-0 bsGMyt uWvwXlS0Da1bWsRX6KOw"
+            data-testid="device-icon"
+            viewBox="0 0 24 24"
+            data-encore-id="icon"
+        >
+            <path d="M0 21a1 1 0 011-1h22a1 1 0 110 2H1a1 1 0 01-1-1zM3 5a3 3 0 013-3h12a3 3 0 013 3v9a3 3 0 01-3 3H6a3 3 0 01-3-3V5zm3-1a1 1 0 00-1 1v9a1 1 0 001 1h12a1 1 0 001-1V5a1 1 0 00-1-1H6z"></path>
+        </svg>
+    </ActualContainer>
+);
+
+export const ActualDeviceSoundIcon = () => (
+    <ActualSoundContainer>
+        <svg
+            role="img"
+            height="16"
+            width="16"
+            aria-hidden="true"
+            class="Svg-sc-ytk21e-0 kEuUqR YY5a3DPS6akIYNqJdwn3"
+            data-testid="tech-icon"
+            viewBox="0 0 16 16"
+            data-encore-id="icon"
+        >
+            <path d="M14.5 8a6.468 6.468 0 00-1.3-3.9l1.2-.9C15.405 4.537 16 6.2 16 8c0 1.8-.595 3.463-1.6 4.8l-1.2-.9A6.468 6.468 0 0014.5 8zM8 1.5a6.5 6.5 0 103.25 12.13.75.75 0 11.75 1.3 8 8 0 110-13.86.75.75 0 11-.75 1.298A6.467 6.467 0 008 1.5z"></path>
+            <path d="M11.259 8c0-.676-.228-1.296-.611-1.791l1.187-.918c.579.749.924 1.69.924 2.709a4.41 4.41 0 01-.925 2.709l-1.186-.918c.383-.495.61-1.115.61-1.791zM8.75 4.115l-4.139 2.39a1.727 1.727 0 000 2.99l4.139 2.39v-7.77z"></path>
+        </svg>
+    </ActualSoundContainer>
+);
+
+export const OptionDevice = () => (
+        <svg
+            role="img"
+            height="16"
+            width="16"
+            aria-hidden="true"
+            viewBox="0 0 16 16"
+            data-encore-id="icon"
+            class="Svg-sc-ytk21e-0 uPxdw"
+        >
+            <path d="M3 8a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm6.5 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM16 8a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"></path>
+        </svg>
 );

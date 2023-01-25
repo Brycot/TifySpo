@@ -78,4 +78,18 @@ export const DivPlayPauseSong = styled.div`
     justify-content: center;
     inline-size: 48px;
     block-size: 48px;
+    box-shadow: 0 8px 8px rgb(0 0 0 / 30%);
+    &:hover {
+        transform: scale(1.07);
+    }
+`;
+
+export const ActualContainer = styled.div`
+    fill: #1ed760;
+    margin-right: 10px;
+`;
+
+export const ActualSoundContainer = styled.div`
+    fill: #1ed760;
+    margin-left: 6px;
 `;

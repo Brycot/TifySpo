@@ -4,7 +4,7 @@ import useRequest from "./useRequest";
 
 export const useSpotify = () => {
     const spotifyToken = localStorage.getItem("access_token");
-    const { updateWithToken, postWithToken } = useRequest();
+    const { updateWithToken, postWithToken, getWithToken } = useRequest();
     // reproducir musica
     const toggleMusic = (playbackState, setPlaybackState) => {
         const request = updateWithToken(
@@ -45,7 +45,7 @@ export const useSpotify = () => {
         const requestFunc = async (_) => {
             try {
                 const response = await request();
-                if (response.status === 202) { 
+                if (response.status === 202) {
                     setPlaybackState((state) => ({
                         ...state,
                         shuffle: !state.shuffle,
@@ -137,11 +137,39 @@ export const useSpotify = () => {
 
         requestFunc();
     };
+
+    // transferir el playback a uno de los dispositivos disponibles
+    const transferPlayBack = (id) => {
+        const body = {
+            device_ids: [id]
+        };
+        const request = updateWithToken(
+            `https://api.spotify.com/v1/me/player`,
+            spotifyToken,
+            body
+        );
+        const requestFunc = async (_) => {
+            try {
+                const response = await request();
+                if (response.status === 202) {
+                    console.log('ya');
+                } else {
+                    console.log("Opps");
+                    return;
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        requestFunc();
+    };
     return {
         toggleMusic,
         toggleShuffle,
         skipPrevious,
         skipNext,
         toggleRepeat,
+        transferPlayBack,
     };
 };

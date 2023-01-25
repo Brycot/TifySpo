@@ -35,19 +35,27 @@ export const Button = styled.button`
     ${(props) =>
         props.playPause &&
         css`
-            background-color: #eee;
+            background-color: #bababa;
             border-radius: 50%;
+            &:hover {
+                background-color: white;
+            }
         `};
 `;
 
 export const Svg = styled.svg`
     color: #bababa;
     fill: currentcolor;
-
+    &:hover {
+        color: white;
+    }
     ${(props) =>
         props.playPause &&
         css`
             color: #121212;
+            &:hover {
+                color: #121212;
+            }
         `};
     ${(props) => {
         switch (props.colorState) {

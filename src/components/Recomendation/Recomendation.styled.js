@@ -35,6 +35,13 @@ export const RecomendationContainer = styled.div`
         padding: 0px;
         min-inline-size: 0px;
         cursor: default;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+    &:hover button {
+        opacity: 1;
+        pointer-events: auto;
+        position: relative;
     }
     & .name {
         -webkit-box-align: center;
