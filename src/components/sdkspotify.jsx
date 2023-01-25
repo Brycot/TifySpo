@@ -18,12 +18,6 @@ function SdkSpotify() {
     const [player, setPlayer] = useState(undefined);
     const [current_track, setTrack] = useState(track);
     
-    const handlePause = async () => {
-        // player.togglePlay().then(() => {
-        //     console.log("Toggled playback!");
-        // });
-        await player.togglePlay();
-    };
 
     useEffect(() => {
         const script = document.createElement("script");

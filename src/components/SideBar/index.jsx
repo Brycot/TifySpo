@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import {
     Logo,
@@ -13,6 +13,7 @@ import {
 import PrimaryLink from "../PrimayLink/PrimaryLink";
 import DownloadContainer from "./DownloadContainer";
 import Playlist from "./Playlist";
+import { PlaylistContext } from "../../utils/context";
 
 import {
     Aside,
@@ -23,6 +24,8 @@ import {
 } from "./SideBar.styled";
 
 function SideBar() {
+    const { items } = useContext(PlaylistContext);
+
     return (
         <Aside>
             <WrapperLogo>
@@ -54,6 +57,11 @@ function SideBar() {
             </Separator>
             <PlaylistContainer>
                 <ul>
+                    {items &&
+                        items.map(({ name, id }, index) => (
+                            <Playlist draggable="false" name={name} key={id} />
+                        ))}
+                    {/* <Playlist />
                     <Playlist />
                     <Playlist />
                     <Playlist />
@@ -66,8 +74,7 @@ function SideBar() {
                     <Playlist />
                     <Playlist />
                     <Playlist />
-                    <Playlist />
-                    <Playlist />
+                    <Playlist /> */}
                 </ul>
             </PlaylistContainer>
             <DownloadContainer />

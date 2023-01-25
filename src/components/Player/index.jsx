@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useContext, useState, useRef } from "react";
 import {
     PlayerSection,
     PlayerControlButtons,
@@ -7,23 +7,14 @@ import {
     PlayBackbar,
     PlaybackNumber,
 } from "./Player.styled";
-import useAuth from "../../hooks/useAuth";
 
 
 function Player() {
 
-    const { login, handleAuthentication, getAuthToken } = useAuth();
-
-    const handleLogin = async() => {
-        login();
-        await handleAuthentication();
-        await getAuthToken()
-    };
-
     return (
         <PlayerSection>
             <PlayerControlButtons>
-                <div className="playerControls-left" >
+                <div className="playerControls-left">
                     <Button>
                         <Svg
                             role="img"
@@ -47,7 +38,10 @@ function Player() {
                     </Button>
                 </div>
 
-                <Button playPause onClick={() => handleLogin()}>
+                <Button
+                    playPause
+                    
+                >
                     <Svg
                         playPause
                         role="img"
@@ -82,7 +76,6 @@ function Player() {
                     </Button>
                 </div>
             </PlayerControlButtons>
-
         </PlayerSection>
     );
 }

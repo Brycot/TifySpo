@@ -7,20 +7,22 @@ import {
     Artist,
 } from "./CurrentSongInfo.styled";
 
-function SongInfoPlayer() {
-    
+function SongInfoPlayer({currentTrack}) {
     return (
         <DivMusicInfo>
             <Img
-                src="https://i.scdn.co/image/ab67616d00004851ebff34fc857c2e80d1150249"
+                src={currentTrack && currentTrack?.album?.images[0]?.url}
                 alt=""
             />
             <div className="SongText">
-                <TitleSong>Quizas</TitleSong>
+                <TitleSong
+                >
+                    {currentTrack && currentTrack?.name}
+                </TitleSong>
                 <span>
-                    <Artist href="/">Sech</Artist>
-                    <Artist href="/">, Feid</Artist>
-                    <Artist href="/">, Dalex</Artist>
+                    {currentTrack && currentTrack?.artists?.map((artist, i) => (
+                        <Artist href={artist.url} key={i}>{artist.name}</Artist>
+                    ))}
                 </span>
             </div>
             <ButtonFav>

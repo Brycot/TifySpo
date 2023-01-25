@@ -6,4 +6,8 @@ export const Header = styled.header`
     height: 64px;
     min-width: 0;
     pointer-events: none;
+    outline: 1px solid red;
+    position: absolute;
+    z-index: 1;
+    background-color: transparent;
 `;

@@ -1,23 +1,11 @@
 import "./App.css";
-import Layout from "./components/layout";
-import Home from "./views/Home";
-import Login from "./views/LogIn";
+import RoutesTifyspo from "./routes/Routes";
 
 function App() {
-    const spotifyToken = localStorage.getItem("access_token");
-
-    if(!spotifyToken) {
-        return (
-            <Login />
-        )
-    }
-    if(spotifyToken) {
-        return (
-            <Layout>
-                <Home />
-            </Layout>
-        )
-    }
+    return (
+        <RoutesTifyspo />
+    )
+    
 }
 
 export default App;

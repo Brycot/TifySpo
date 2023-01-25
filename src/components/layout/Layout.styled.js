@@ -12,4 +12,16 @@ export const Div = styled.div`
     min-height: 100%;
     position: relative;
     width: 100%;
+    overflow: hidden;
+`;
+
+export const MainContainer = styled.main`
+    background-color: #121212;
+    overflow: hidden;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    padding-top: 70px;
+    outline: 2px solid blue;
 `;

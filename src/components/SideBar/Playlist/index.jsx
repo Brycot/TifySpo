@@ -1,11 +1,11 @@
 import React from "react";
 
 import { Li } from "./Playlist.styled";
-function Playlist() {
+function Playlist({ name, id }) {
     return (
         <Li>
             <a href="">
-                <span>Playlist</span>
+                <span>{name}</span>
             </a>
         </Li>
     );

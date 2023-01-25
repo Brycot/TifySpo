@@ -3,10 +3,10 @@ import { generateRandomString } from "../utils/generateRandomString";
 import { useHashParams } from "./useHashParams";
 
 const useAuth = () => {
+
     const login = () => {
         const state = generateRandomString(16);
         localStorage.setItem("auth_state", state);
-
         let url = "https://accounts.spotify.com/authorize";
         url += "?response_type=token";
         url +=
@@ -79,13 +79,12 @@ const useAuth = () => {
         return new Promise((resolve, reject) => {
             const { access_token, state } = useHashParams();
             const auth_state = localStorage.getItem("auth_state");
-
             if (state === null || state != auth_state) {
-                reject(new Error("The state doesn't match"));
+                reject(new Error("The state doesn't match allaalal"));
             }
 
             localStorage.removeItem("auth_state");
-
+            console.log('dqwqwdqwdqwdqwd');
             if (access_token) {
                 setSession({ accessToken: access_token });
                 return resolve(access_token);

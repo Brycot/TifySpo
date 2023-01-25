@@ -44,6 +44,7 @@ export const Artist = styled.a`
     font-size: 0.75rem;
     color: #b3b3b3;
     text-decoration: none;
+    margin-right: 4px;
     &:hover {
         color: #eeee;
         text-decoration: underline;

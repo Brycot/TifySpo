@@ -35,7 +35,9 @@ export const OptionsUsers = styled.div`
 export const PlaylistContainer = styled.div`
     margin-top: 10px;
     width: 100%;
+    max-height: 443px;
     padding-left: 24px;
+    overflow-y: auto;
     & ul {
         width: 100%;
         display: flex;

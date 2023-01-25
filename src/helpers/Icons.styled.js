@@ -15,7 +15,7 @@ export const Div = styled.div`
     height: 24px;
     background-color: #fff;
     border-radius: 2px;
-    opacity: .7;
+    opacity: 0.7;
 `;
 
 export const DivFavs = styled.div`
@@ -25,9 +25,9 @@ export const DivFavs = styled.div`
     fill: currentcolor;
     width: 24px;
     height: 24px;
-    background: linear-gradient(135deg,#450af5,#c4efd9);
+    background: linear-gradient(135deg, #450af5, #c4efd9);
     border-radius: 2px;
-    opacity: .7;
+    opacity: 0.7;
     & div svg {
         color: white;
     }
@@ -41,10 +41,9 @@ export const DivCaps = styled.div`
     height: 24px;
     background: #006450;
     border-radius: 2px;
-    opacity: .7;
+    opacity: 0.7;
     & div svg {
-    color: #1ed760;
-
+        color: #1ed760;
     }
 `;
 
@@ -59,4 +58,24 @@ export const DivContainerSvg = styled.div`
     & svg {
         color: #000;
     }
+`;
+
+export const DivPlayPauseSong = styled.div`
+    --background-base: #1ed760;
+    --text-base: #000;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    background-color: #1ed760;
+    color: var(--text-base, #000000);
+    display: flex;
+    border-radius: 500px;
+    font-size: inherit;
+    min-block-size: 48px;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    inline-size: 48px;
+    block-size: 48px;
 `;

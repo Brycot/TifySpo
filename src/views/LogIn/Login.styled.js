@@ -25,7 +25,7 @@ export const LoginContainer = styled.div`
     align-items: center;
     background-color: transparent;
 
-    & div {
+    & .Container {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -36,9 +36,21 @@ export const LoginContainer = styled.div`
         height: 500px;
         border-radius: 14px;
         background-color: #121212;
+        box-shadow: 0px 0px 50px 1px #121212;
     }
-    & div svg {
+    & .Container svg {
         color: white;
+    }
+    & div {
+        display: flex;
+        flex-direction: column;
+    }
+    & div p {
+        color: #7c7c7c;
+        line-height: 18px;
+    }
+    & div p span {
+        color: #fff;
     }
 `;
 
@@ -52,6 +64,7 @@ export const ButtonLogin = styled.button`
     text-decoration: none;
     transition: all 0.3s ease;
     user-select: none;
+    cursor: pointer;
     &:hover {
         transform: scale(1.05);
     }
