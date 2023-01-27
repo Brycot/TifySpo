@@ -7,6 +7,8 @@ import {
     DivPlayPauseSong,
     ActualContainer,
     ActualSoundContainer,
+    DeviceContainer,
+    LinkContainer,
 } from "./Icons.styled";
 
 export const Logo = () => (
@@ -196,7 +198,7 @@ export const ActualDeviceIcon = () => (
             height="32"
             width="32"
             aria-hidden="true"
-            class="Svg-sc-ytk21e-0 bsGMyt uWvwXlS0Da1bWsRX6KOw"
+            className="Svg-sc-ytk21e-0 bsGMyt uWvwXlS0Da1bWsRX6KOw"
             data-testid="device-icon"
             viewBox="0 0 24 24"
             data-encore-id="icon"
@@ -213,7 +215,7 @@ export const ActualDeviceSoundIcon = () => (
             height="16"
             width="16"
             aria-hidden="true"
-            class="Svg-sc-ytk21e-0 kEuUqR YY5a3DPS6akIYNqJdwn3"
+            className="Svg-sc-ytk21e-0 kEuUqR YY5a3DPS6akIYNqJdwn3"
             data-testid="tech-icon"
             viewBox="0 0 16 16"
             data-encore-id="icon"
@@ -224,16 +226,51 @@ export const ActualDeviceSoundIcon = () => (
     </ActualSoundContainer>
 );
 
-export const OptionDevice = () => (
+export const DeviceIcon = () => (
+    <DeviceContainer>
         <svg
-            role="img"
+            role="presentation"
+            height="32"
+            width="32"
+            aria-hidden="true"
+            className="Svg-sc-ytk21e-0 bsGMyt uWvwXlS0Da1bWsRX6KOw"
+            data-testid="device-icon"
+            viewBox="0 0 24 24"
+            data-encore-id="icon"
+        >
+            <path d="M0 21a1 1 0 011-1h22a1 1 0 110 2H1a1 1 0 01-1-1zM3 5a3 3 0 013-3h12a3 3 0 013 3v9a3 3 0 01-3 3H6a3 3 0 01-3-3V5zm3-1a1 1 0 00-1 1v9a1 1 0 001 1h12a1 1 0 001-1V5a1 1 0 00-1-1H6z"></path>
+        </svg>
+    </DeviceContainer>
+);
+
+export const OptionDevice = () => (
+    <svg
+        role="img"
+        height="16"
+        width="16"
+        aria-hidden="true"
+        viewBox="0 0 16 16"
+        data-encore-id="icon"
+        className="Svg-sc-ytk21e-0 uPxdw"
+    >
+        <path d="M3 8a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm6.5 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM16 8a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"></path>
+    </svg>
+);
+
+export const LinkIcon = () => (
+    <LinkContainer>
+        <svg
+            role="presentation"
             height="16"
             width="16"
             aria-hidden="true"
+            data-testid="icon-external-link"
+            className="Svg-sc-ytk21e-0 kjWctV uBthvyMcAxMlCFFpafAJ"
             viewBox="0 0 16 16"
             data-encore-id="icon"
-            class="Svg-sc-ytk21e-0 uPxdw"
         >
-            <path d="M3 8a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm6.5 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM16 8a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"></path>
+            <path d="M1 2.75A.75.75 0 011.75 2H7v1.5H2.5v11h10.219V9h1.5v6.25a.75.75 0 01-.75.75H1.75a.75.75 0 01-.75-.75V2.75z"></path>
+            <path d="M15 1v4.993a.75.75 0 11-1.5 0V3.56L8.78 8.28a.75.75 0 01-1.06-1.06l4.72-4.72h-2.433a.75.75 0 010-1.5H15z"></path>
         </svg>
+    </LinkContainer>
 );

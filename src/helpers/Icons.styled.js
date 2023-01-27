@@ -89,7 +89,16 @@ export const ActualContainer = styled.div`
     margin-right: 10px;
 `;
 
+export const DeviceContainer = styled.div`
+    fill: white;
+    margin-right: 10px;
+`;
+
 export const ActualSoundContainer = styled.div`
     fill: #1ed760;
     margin-left: 6px;
+`;
+export const LinkContainer = styled.div`
+    fill: white;
+    margin-right: 10px;
 `;

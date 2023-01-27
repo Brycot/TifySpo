@@ -9,9 +9,17 @@ import {
     DeviceContainer,
     DeviceName,
     ActualDeviceContainer,
+    DeviceOption,
+    Problem,
 } from "./Devices.styled";
 
-import { ActualDeviceIcon, ActualDeviceSoundIcon, OptionDevice } from "../../helpers/Icons";
+import {
+    ActualDeviceIcon,
+    ActualDeviceSoundIcon,
+    OptionDevice,
+    DeviceIcon,
+    LinkIcon,
+} from "../../helpers/Icons";
 
 function Devices({ children }) {
     const [devicesAllow, setDevicesAllow] = useState([]);
@@ -51,12 +59,9 @@ function Devices({ children }) {
 
     useEffect(() => {
         getDevices();
-    }, []);
+    }, [devicesAllow]);
     return (
         <DevicesContainer
-            onClick={() => {
-                console.log(devicesAllow);
-            }}
         >
             <div className="Devices">
                 {actualDevice && (
@@ -64,30 +69,39 @@ function Devices({ children }) {
                         <ActualDeviceIcon />
                         <div className="textContainer">
                             <DeviceTitle>Dispositivo actual</DeviceTitle>
-                            <DeviceName><ActualDeviceSoundIcon />{actualDevice.name}</DeviceName>
+                            <DeviceName actual>
+                                <ActualDeviceSoundIcon />
+                                {actualDevice.name}
+                            </DeviceName>
                         </div>
-                        <button><OptionDevice /></button>
+                        <button>
+                            <OptionDevice />
+                        </button>
                     </ActualDeviceContainer>
                 )}
-                {devicesAvailable &&
-                    devicesAvailable.map((device) => (
-                        <div key={device.id}>
-                            <DeviceTitle>
-                                Seleccionar otro dispositivo
-                            </DeviceTitle>
-                            <DeviceContainer>
-                                <button
+                {devicesAvailable && (
+                    <>
+                        <DeviceTitle>Seleccionar otro dispositivo</DeviceTitle>
+                        {devicesAvailable.map((device) => (
+                            <DeviceContainer key={device.id}>
+                                <DeviceOption
                                     onClick={() => {
                                         transferPlayBack(device.id);
                                         getDevices();
                                     }}
                                 >
+                                    <DeviceIcon />
                                     <DeviceName>{device.name}</DeviceName>
-                                </button>
+                                </DeviceOption>
                             </DeviceContainer>
-                        </div>
-                    ))}
+                        ))}
+                    </>
+                )}
             </div>
+            <Problem href="https://support.spotify.com/co/article/spotify-connect/">
+                <p>¿Tu dispositivo no aparece?</p>
+                <LinkIcon />
+            </Problem>
         </DevicesContainer>
     );
 }

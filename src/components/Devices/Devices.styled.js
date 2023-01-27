@@ -14,6 +14,7 @@ export const DevicesContainer = styled.section`
     & .Devices {
         display: flex;
         flex-direction: column;
+        align-items: center;
         padding: 0 16px;
     }
     & button {
@@ -24,9 +25,10 @@ export const DevicesContainer = styled.section`
     }
 `;
 
-export const DeviceContainer = styled.h3`
+export const DeviceContainer = styled.div`
     display: flex;
     flex-direction: column;
+    border-radius: 6px;
     &:hover {
         background-color: #3d3d3d;
     }
@@ -47,22 +49,47 @@ export const DeviceName = styled.p`
     margin-block: 0px;
     font-size: 1rem;
     font-weight: 400;
-    color: #1ed760;
+    color: ${(props) => (props.actual ? "#1ed760" : "white")};
     display: flex;
     gap: 6px;
-    height: 25.59px;
 `;
 
 export const ActualDeviceContainer = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 16px;
-    width: 100%;
+    min-width: 100%;
     margin-right: 7px;
     & .textContainer {
         width: 174px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+    }
+`;
+
+export const DeviceOption = styled.button`
+    width: 288px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+`;
+
+export const Problem = styled.a`
+    display: flex;
+    text-decoration: none;
+    height: auto;
+    padding: 12px 16px;
+    background-color: #282828;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    & p {
+        flex: 1;
+        margin-inline-end: 16px;
+        margin-block: 0px;
+        font-size: 1rem;
+        font-weight: 400;
+        color: #fff;
     }
 `;
