@@ -8,11 +8,19 @@ import {
     PlaybackNumber,
 } from "./Player.styled";
 import { useSpotify } from "../../hooks/useSpotify";
+import Progressbar from "../ProgressBar";
 
 function Player({ playbackState, setPlaybackState }) {
+    const [progress, setProgress] = useState(0);
 
-    const { toggleMusic, toggleShuffle, skipPrevious, skipNext, toggleRepeat } =
-        useSpotify();
+    const {
+        toggleMusic,
+        toggleShuffle,
+        skipPrevious,
+        skipNext,
+        toggleRepeat,
+        handlePosition,
+    } = useSpotify();
     const handlePlay = () => {
         toggleMusic(playbackState, setPlaybackState);
     };
@@ -35,7 +43,9 @@ function Player({ playbackState, setPlaybackState }) {
                 <div className="playerControls-left">
                     <Button onClick={handleShuffle}>
                         <Svg
-                            colorState={playbackState.shuffle ? "verde" : "gris"}
+                            colorState={
+                                playbackState.shuffle ? "verde" : "gris"
+                            }
                             role="img"
                             height="16"
                             width="16"
@@ -113,6 +123,15 @@ function Player({ playbackState, setPlaybackState }) {
                     </Button>
                 </div>
             </PlayerControlButtons>
+            <PlayBackbar>
+                <PlaybackNumber>0:57</PlaybackNumber>
+                <Progressbar
+                    value={progress}
+                    setValue={(ratio) => handlePosition(ratio, setProgress)}
+                    className="progress_position"
+                />
+                <PlaybackNumber>2:26</PlaybackNumber>
+            </PlayBackbar>
         </PlayerSection>
     );
 }

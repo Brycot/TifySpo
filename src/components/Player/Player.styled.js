@@ -12,6 +12,7 @@ export const PlayerControlButtons = styled.div`
     display: flex;
     align-items: center;
     gap: 16px;
+    margin-bottom: 8px;
     & .playerControls-left {
         display: flex;
         justify-content: flex-end;

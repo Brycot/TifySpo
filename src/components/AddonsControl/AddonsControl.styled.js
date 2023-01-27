@@ -6,9 +6,10 @@ export const AddonsControlSection = styled.section`
     justify-content: flex-end;
     min-width: 180px;
     width: 30%;
-    & div {
+    & .volumeSection {
         display: flex;
         align-items: center;
+        width: 125px;
     }
     & input {
         width: 96px;
