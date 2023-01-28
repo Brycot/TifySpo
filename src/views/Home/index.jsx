@@ -44,10 +44,10 @@ function Home() {
                         {topItems &&
                             topItems.map((item, index) => (
                                 <Recomendation
-                                    name={item.name}
-                                    key={item.id}
-                                    uri={item.uri}
-                                    img={item.album.images[0].url}
+                                    name={item?.name}
+                                    key={item?.id}
+                                    uri={item?.uri}
+                                    img={item?.album?.images[0]?.url}
                                 />
                             ))}
                     </Gridrecomendatios>

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 // styled-components
 import { Wrapper } from "./ProgressBar.styled";
 
-export default function Progressbar({ className, value, setValue, func }) {
+export default function Progressbar({ className, value, setValue, func, duration, isSongDuration }) {
     const wrapperRef = useRef(null);
 
     const [engaged, setEngaged] = useState(false);
@@ -62,6 +62,7 @@ export default function Progressbar({ className, value, setValue, func }) {
                 }
                 setScrub(offsetRatio);
                 setValue(offsetRatio)
+                console.log(offsetRatio);
             }
         };
 
@@ -74,7 +75,16 @@ export default function Progressbar({ className, value, setValue, func }) {
         };
     }, [engaged, isDragging, setIsDraging, scrub, setValue, func, value]);
 
-    return (
+    return isSongDuration ? (
+        (
+            <Wrapper ref={wrapperRef} onMouseEnter={handleEnter} onMouseDown={handleMouseDown} onMouseLeave={handleLeave}>
+                <div className="progress_bar">
+                    <div className={`progress_bar_progress`} style={{ transform: `translate(-${((1 - (scrub || (value / duration) * 100))).toFixed(2)}%)` }} />
+                </div>
+                <button className={`progress_bar_slider ${engaged && 'progress_bar_slider_engaged'} ${className}`} style={{ left: className === "progress_volume" ? `${((((scrub || (value / duration) * 100)) * 100) + 1).toFixed(2)}%` : `${(((scrub || (value / duration) * 100))).toFixed(2)}%` }} />
+            </Wrapper>
+        )
+    ) : (
         <Wrapper
             ref={wrapperRef}
             onMouseEnter={handleEnter}

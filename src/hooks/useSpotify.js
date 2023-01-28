@@ -184,22 +184,22 @@ export const useSpotify = () => {
     };
 
     const handlePosition = (ratio, setPosition) => {
-        const integer = Math.round(ratio * 10000);
+        const integer = Math.round(ratio * 60000);
         console.log(integer);
-        // const seekPosition = async _ => {
-        //     const requestFunc = updateWithToken(`https://api.spotify.com/v1/me/player/seek?position_ms=${integer}`, spotifyToken);
-        //     try {
-        //         const response = await requestFunc();
-        //         if (response.status === 204) {
-        //             setPosition(ratio);
-        //         } else {
-        //             console.log('Opps, something went wrong!');
-        //         }
-        //     } catch (error) {
-        //         console.log(error)
-        //     }
-        // }
-        // seekPosition();
+        const seekPosition = async _ => {
+            const requestFunc = updateWithToken(`https://api.spotify.com/v1/me/player/seek?position_ms=${integer}`, spotifyToken);
+            try {
+                const response = await requestFunc();
+                if (response.status === 204) {
+                    setPosition(ratio);
+                } else {
+                    console.log('Opps, something went wrong!');
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        seekPosition();
     };
     return {
         toggleMusic,
