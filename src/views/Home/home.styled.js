@@ -55,4 +55,19 @@ export const Gridrecomendatios = styled.div`
 export const SectionHome = styled.section`
     width: 100%;
     padding: 24px 32px 0 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+`;
+
+export const GridItems = styled.div`
+    --column-width: 213px;
+    --column-count: 5;
+    --grid-gap: 24px;
+    grid-auto-rows: 0;
+    grid-template-rows: 1fr;
+    overflow-y: hidden;
+    grid-gap: var(--grid-gap);
+    display: grid;
+    grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
 `;

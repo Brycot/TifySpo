@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import { Section, Title, Gridrecomendatios, SectionHome } from "./home.styled";
+import { Section, Title, Gridrecomendatios, SectionHome, GridItems } from "./home.styled";
 
 import { Recomendation } from "../../components/Recomendation";
 import useRequest from "../../hooks/useRequest";
+import ItemCard from "../../components/ItemCard";
 
 function Home() {
     const [topItems, setTopItems] = useState([]);
+    const [topPlaylist, setTopPlaylist] = useState([]);
+    const [recentPlayed, setRecentPlayed] = useState([])
     const accessToken = localStorage.getItem("access_token");
     const { getWithToken, updateWithToken } = useRequest();
 
@@ -19,11 +22,35 @@ function Home() {
                 accessToken,
                 cancelSource
             );
+
+            const reqUserFeaturedPlaylist = getWithToken(
+                "https://api.spotify.com/v1/browse/featured-playlists?limit=6",
+                accessToken,
+                cancelSource
+            );
+
+            const reqRecentPlayed = getWithToken(
+                "https://api.spotify.com/v1/me/player/recently-played?limit=6",
+                accessToken,
+                cancelSource
+            );
             try {
-                const [_userTopItems] = await Promise.all([reqUserTopItems()]);
+                const [_userTopItems, _userFeaturedPlaylist, _userRecentPlayed] = await Promise.all([
+                    reqUserTopItems(),
+                    reqUserFeaturedPlaylist(),
+                    reqRecentPlayed()
+                ]);
                 // handle axios token cancellation
-                if (typeof _userTopItems !== "undefined") {
+
+                if (
+                    typeof _userTopItems !== "undefined" &&
+                    typeof _userFeaturedPlaylist !== "undefined" &&
+                    typeof _userRecentPlayed !== "undefined"
+                ) {
+                    console.log(_userRecentPlayed.data.items[0]);
                     setTopItems(_userTopItems.data.items);
+                    setTopPlaylist(_userFeaturedPlaylist.data.playlists.items);
+                    setRecentPlayed(_userRecentPlayed.data.items);
                 }
             } catch (error) {
                 console.log(error);
@@ -51,6 +78,23 @@ function Home() {
                                 />
                             ))}
                     </Gridrecomendatios>
+                </Section>
+                <Section>
+                    <Title>
+                        <h2>Escuchado Recientemente</h2>
+                    </Title>
+                    <GridItems>
+                        {recentPlayed &&
+                            recentPlayed.map((item, index) => (
+                                <ItemCard
+                                    name={item?.track.name}
+                                    key={item?.track.id + index}
+                                    uri={item?.track.uri}
+                                    img={item?.track?.album?.images[0]?.url}
+                                    artists={item?.track?.artists}
+                                />
+                            ))}
+                    </GridItems>
                 </Section>
             </SectionHome>
         </>
