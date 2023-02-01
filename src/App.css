@@ -7,10 +7,9 @@
 
 main {
     width: 100%;
-    min-height: 70vh;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     grid-area: main-view;
-    background: blue;
 }

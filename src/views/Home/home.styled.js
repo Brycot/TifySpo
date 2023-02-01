@@ -66,7 +66,7 @@ export const GridItems = styled.div`
     --grid-gap: 24px;
     grid-auto-rows: 0;
     grid-template-rows: 1fr;
-    overflow-y: hidden;
+    overflow: hidden;
     grid-gap: var(--grid-gap);
     display: grid;
     grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));

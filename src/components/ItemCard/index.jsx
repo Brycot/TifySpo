@@ -38,13 +38,15 @@ function ItemCard({ name, img, uri, artists }) {
                     <a className="Card__Title__Song" href="">
                         {name}
                     </a>
-                    <div className="Card__Title__ArtistContainer">
-                        {artists.map((artist) => (
-                            <a className="Card__Title__Artist" href="">
-                                {artist.name}
-                            </a>
-                        ))}
-                    </div>
+                    {artists && (
+                        <div className="Card__Title__ArtistContainer">
+                            {artists.map((artist) => (
+                                <a className="Card__Title__Artist" href="">
+                                    {artist.name}
+                                </a>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </div>
         </CardContainer>

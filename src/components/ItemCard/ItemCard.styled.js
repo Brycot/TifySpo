@@ -104,6 +104,8 @@ export const CardContainer = styled.div`
         text-overflow: ellipsis;
         white-space: nowrap;
         text-decoration: none;
+        width: 100%;
+        text-align: left;
     }
     & .Card__Title__ArtistContainer {
         display: flex;

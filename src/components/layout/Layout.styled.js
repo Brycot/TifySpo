@@ -17,11 +17,11 @@ export const Div = styled.div`
 
 export const MainContainer = styled.main`
     background-color: #121212;
-    overflow: hidden;
+    max-height: calc(100vh - 89px);
+    overflow-y: auto;
     display: flex;
     justify-content: start;
     align-items: center;
-
     padding-top: 70px;
-    outline: 2px solid blue;
+    position: absolute;
 `;

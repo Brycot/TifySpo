@@ -10,4 +10,6 @@ export const Footer = styled.footer`
     align-items: center;
     padding: 0 16px;
     grid-area: now-playing-bar;
+    position: relative;
+    z-index: 2323;
 `;
