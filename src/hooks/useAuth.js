@@ -8,7 +8,7 @@ const useAuth = () => {
         const state = generateRandomString(16);
         localStorage.setItem("auth_state", state);
         let url = "https://accounts.spotify.com/authorize";
-        url += "?response_type=token";
+        url += "?response_type=code";
         url +=
             "&client_id=" +
             encodeURIComponent(import.meta.env.VITE_SPOTIFY_CLIENT_ID);
@@ -54,10 +54,6 @@ const useAuth = () => {
         localStorage.setItem("expires_at", expiresAt);
     };
 
-    const setProfile = (profile) => {
-        localStorage.setItem("profile", JSON.stringify(profile));
-    };
-
     const handleUserInfo = async (accessToken) => {
         const ID = "4ByaTrfoYbXrmlbsTG8MTD";
         const headers = {
@@ -84,7 +80,7 @@ const useAuth = () => {
             }
 
             localStorage.removeItem("auth_state");
-            console.log('dqwqwdqwdqwdqwd');
+            
             if (access_token) {
                 setSession({ accessToken: access_token });
                 return resolve(access_token);
