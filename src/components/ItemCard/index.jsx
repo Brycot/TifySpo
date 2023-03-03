@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import { CardContainer } from "./ItemCard.styled";
-import { PlayButtonSong } from "../../helpers/Icons";
-import useRequest from "../../hooks/useRequest";
+import { CardContainer } from './ItemCard.styled';
+import { PlayButtonSong } from '../../helpers/Icons';
+import useRequest from '../../hooks/useRequest';
 
 function ItemCard({ name, img, uri, artists }) {
-    const accessToken = localStorage.getItem("access_token");
+    const accessToken = localStorage.getItem('access_token');
 
     const { updateWithToken } = useRequest();
 
@@ -41,7 +41,11 @@ function ItemCard({ name, img, uri, artists }) {
                     {artists && (
                         <div className="Card__Title__ArtistContainer">
                             {artists.map((artist) => (
-                                <a className="Card__Title__Artist" href="">
+                                <a
+                                    className="Card__Title__Artist"
+                                    href=""
+                                    key={artist.id}
+                                >
                                     {artist.name}
                                 </a>
                             ))}

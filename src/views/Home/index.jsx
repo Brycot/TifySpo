@@ -1,11 +1,17 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-import { Section, Title, Gridrecomendatios, SectionHome, GridItems } from "./home.styled";
+import {
+    Section,
+    Title,
+    Gridrecomendatios,
+    SectionHome,
+    GridItems,
+} from './home.styled';
 
-import { Recomendation } from "../../components/Recomendation";
-import useRequest from "../../hooks/useRequest";
-import ItemCard from "../../components/ItemCard";
+import { Recomendation } from '../../components/Recomendation';
+import useRequest from '../../hooks/useRequest';
+import ItemCard from '../../components/ItemCard';
 
 function Home() {
     const [topItems, setTopItems] = useState([]);
@@ -14,41 +20,45 @@ function Home() {
 
     const [recentPlayed, setRecentPlayed] = useState([]);
 
-    const accessToken = localStorage.getItem("access_token");
+    const accessToken = localStorage.getItem('access_token');
     const { getWithToken, updateWithToken } = useRequest();
 
     useEffect(() => {
         const cancelSource = axios.CancelToken.source();
         async function makeRequest() {
             const reqUserTopItems = getWithToken(
-                "https://api.spotify.com/v1/me/top/tracks?limit=6",
+                'https://api.spotify.com/v1/me/top/tracks?limit=6',
                 accessToken,
                 cancelSource
             );
 
             const reqUserFeaturedPlaylist = getWithToken(
-                "https://api.spotify.com/v1/browse/featured-playlists?limit=6",
+                'https://api.spotify.com/v1/browse/featured-playlists?limit=6',
                 accessToken,
                 cancelSource
             );
 
             const reqRecentPlayed = getWithToken(
-                "https://api.spotify.com/v1/me/player/recently-played?limit=6",
+                'https://api.spotify.com/v1/me/player/recently-played?limit=6',
                 accessToken,
                 cancelSource
             );
             try {
-                const [_userTopItems, _userFeaturedPlaylist, _userRecentPlayed] = await Promise.all([
+                const [
+                    _userTopItems,
+                    _userFeaturedPlaylist,
+                    _userRecentPlayed,
+                ] = await Promise.all([
                     reqUserTopItems(),
                     reqUserFeaturedPlaylist(),
-                    reqRecentPlayed()
+                    reqRecentPlayed(),
                 ]);
                 // handle axios token cancellation
 
                 if (
-                    typeof _userTopItems !== "undefined" &&
-                    typeof _userFeaturedPlaylist !== "undefined" &&
-                    typeof _userRecentPlayed !== "undefined"
+                    typeof _userTopItems !== 'undefined' &&
+                    typeof _userFeaturedPlaylist !== 'undefined' &&
+                    typeof _userRecentPlayed !== 'undefined'
                 ) {
                     setTopItems(_userTopItems.data.items);
                     setTopPlaylist(_userFeaturedPlaylist.data.playlists.items);
@@ -59,7 +69,7 @@ function Home() {
                 console.log(error);
             }
         }
-    
+
         makeRequest();
     }, []);
 
@@ -107,6 +117,7 @@ function Home() {
                         {topPlaylist &&
                             topPlaylist.map((item, index) => (
                                 <ItemCard
+                                    key={item?.id + index}
                                     name={item.name}
                                     img={item.images[0].url}
                                 />

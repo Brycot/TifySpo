@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import useAuth from '../../hooks/useAuth';
 
-export const callback = () => {
+export const Callback = () => {
     const { getAuthToken, handleAuthentication } = useAuth();
 
     const onLogin = async () => {
