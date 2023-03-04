@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react';
 
-import useAuth from "../../hooks/useAuth";
+import useAuth from '../../hooks/useAuth';
 
-import { Logo } from "../../helpers/Icons";
+import { Logo } from '../../helpers/Icons';
 
-import { Background, LoginContainer, ButtonLogin } from "./Login.styled";
+import { Background, LoginContainer, ButtonLogin } from './Login.styled';
+
 function Login() {
-
     const { login } = useAuth();
 
     const handleLogin = () => {
         login();
     };
-    
+
     return (
         <>
             <LoginContainer>

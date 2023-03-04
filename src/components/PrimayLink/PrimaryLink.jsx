@@ -1,13 +1,14 @@
-import React from "react";
-import { Primary } from "./PrimaryLink.styled";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { Primary } from './PrimaryLink.styled';
 
-function PrimaryLink({ icon, text }) {
+function PrimaryLink({ icon, text,link }) {
     return (
         <Primary>
-            <a href="">
+            <NavLink to={link} className={({ isActive }) => isActive ? 'active' : ''}>
                 {icon}
                 <span>{text}</span>
-            </a>
+            </NavLink>
         </Primary>
     );
 }

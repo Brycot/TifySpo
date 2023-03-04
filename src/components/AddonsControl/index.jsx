@@ -5,11 +5,10 @@ import ProgressBar from '../ProgressBar';
 import { AddonsControlSection, Button, Svg } from './AddonsControl.styled';
 
 function AddonsControl() {
+    const [viewDevices, setViewDevices] = useState(false);
     const [volume, setVolume] = useState(50);
-
     const { handleVolume } = useSpotify();
 
-    const [viewDevices, setViewDevices] = useState(false);
     const handleView = () => {
         setViewDevices(!viewDevices);
     };
@@ -64,10 +63,12 @@ function AddonsControl() {
                     </Svg>
                 </Button>
                 <ProgressBar
-                    volume={volume}
-                    setVolume={setVolume}
+                    value={volume}
+                    setValue={setVolume}
                     handleChange={onChangeVolume}
-                />
+                    min={0}
+                    max={100}
+                /> 
             </div>
         </AddonsControlSection>
     );

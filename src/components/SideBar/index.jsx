@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
 
 import {
     Logo,
@@ -8,12 +8,12 @@ import {
     CreatePlaylistIcon,
     YourFavsIcon,
     YourEpisodesIcon,
-} from "../../helpers/Icons";
+} from '../../helpers/Icons';
 
-import PrimaryLink from "../PrimayLink/PrimaryLink";
-import DownloadContainer from "./DownloadContainer";
-import Playlist from "./Playlist";
-import { PlaylistContext } from "../../utils/context";
+import PrimaryLink from '../PrimayLink/PrimaryLink';
+import DownloadContainer from './DownloadContainer';
+import Playlist from './Playlist';
+import { PlaylistContext } from '../../utils/context';
 
 import {
     Aside,
@@ -21,7 +21,7 @@ import {
     OptionsUsers,
     Separator,
     PlaylistContainer,
-} from "./SideBar.styled";
+} from './SideBar.styled';
 
 function SideBar() {
     const { items } = useContext(PlaylistContext);
@@ -34,9 +34,21 @@ function SideBar() {
                 </a>
             </WrapperLogo>
             <ul>
-                <PrimaryLink icon={<HomeIconActive />} text="Inicio" />
-                <PrimaryLink icon={<SearchIcon />} text="Buscar" />
-                <PrimaryLink icon={<LibraryIcon />} text="Tu Biblioteca" />
+                <PrimaryLink
+                    icon={<HomeIconActive />}
+                    link={'/home'}
+                    text="Inicio"
+                />
+                <PrimaryLink
+                    icon={<SearchIcon />}
+                    link={'/search'}
+                    text="Buscar"
+                />
+                <PrimaryLink
+                    icon={<LibraryIcon />}
+                    link={'/library'}
+                    text="Tu Biblioteca"
+                />
             </ul>
             <OptionsUsers>
                 <ul>

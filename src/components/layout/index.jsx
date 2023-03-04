@@ -12,7 +12,7 @@ import axios from 'axios';
 
 function Layout() {
     const [playlists, setPlaylists] = useState([]);
-    const [userInfo, setUserInfo] = useState([]);
+    const [userInfo, setUserInfo] = useState({});
     const [currentTrack, setCurrentTrack] = useState({});
     const accessToken = localStorage.getItem('access_token');
     const { getWithToken } = useRequest();
@@ -55,7 +55,7 @@ function Layout() {
         <CurrentTrackContext.Provider value={{ currentTrack, setCurrentTrack }}>
             <PlaylistContext.Provider value={playlists}>
                 <Div>
-                    <Topbar />
+                    <Topbar userInfo={userInfo} />
                     <SideBar />
                     <MainContainer>
                         <Outlet />

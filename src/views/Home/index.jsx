@@ -15,11 +15,8 @@ import ItemCard from '../../components/ItemCard';
 
 function Home() {
     const [topItems, setTopItems] = useState([]);
-
     const [topPlaylist, setTopPlaylist] = useState([]);
-
     const [recentPlayed, setRecentPlayed] = useState([]);
-
     const accessToken = localStorage.getItem('access_token');
     const { getWithToken, updateWithToken } = useRequest();
 
@@ -62,7 +59,6 @@ function Home() {
                 ) {
                     setTopItems(_userTopItems.data.items);
                     setTopPlaylist(_userFeaturedPlaylist.data.playlists.items);
-                    console.log(_userFeaturedPlaylist.data.playlists.items);
                     setRecentPlayed(_userRecentPlayed.data.items);
                 }
             } catch (error) {

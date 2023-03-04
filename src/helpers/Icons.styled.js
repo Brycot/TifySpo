@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Svg = styled.svg`
     fill: currentcolor;
@@ -101,4 +101,18 @@ export const ActualSoundContainer = styled.div`
 export const LinkContainer = styled.div`
     fill: white;
     margin-right: 10px;
+`;
+
+export const NavigateButton = styled.button`
+    width: 32px;
+    height: 32px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    fill: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;

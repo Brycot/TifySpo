@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const PlayerSection = styled.section`
     display: flex;
@@ -33,6 +33,10 @@ export const Button = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.5s ease;
+    & :active {
+        transform: scale(0.9);
+    }
     ${(props) =>
         props.playPause &&
         css`
@@ -60,12 +64,12 @@ export const Svg = styled.svg`
         `};
     ${(props) => {
         switch (props.colorState) {
-            case "verde":
+            case 'verde':
                 return css`
                     color: #1ed760;
                 `;
                 break;
-            case "gris":
+            case 'gris':
                 return css`
                     color: #bababa;
                 `;

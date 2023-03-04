@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Img = styled.img`
     width: 56px;
@@ -19,6 +19,7 @@ export const DivMusicInfo = styled.section`
         align-items: flex-start;
         justify-content: center;
         margin: 0 14px;
+        overflow: hidden;
     }
 `;
 export const ButtonFav = styled.button`
@@ -35,6 +36,9 @@ export const Svg = styled.svg`
 export const TitleSong = styled.a`
     cursor: pointer;
     font-size: 0.875rem;
+    text-align: start;
+    line-height: 14px;
+    white-space: nowrap;
     &:hover {
         color: #eeee;
         text-decoration: underline;

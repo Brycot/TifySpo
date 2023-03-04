@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Primary = styled.li`
     list-style: none;
@@ -18,9 +18,21 @@ export const Primary = styled.li`
 
         user-select: none;
 
-        transition: all .5s ease;
+        transition: all 0.5s ease;
     }
-    & a:hover {
+    & svg {
+        transition: all 0.5s ease;
+    }
+    & .active {
+        color: white;
+    }
+    & .active svg {
+        color: white;
+    }
+    &:hover a {
+        color: white;
+    }
+    &:hover svg {
         color: white;
     }
 `;

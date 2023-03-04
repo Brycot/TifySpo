@@ -1,3 +1,4 @@
+import { useSpotify } from '../../hooks/useSpotify';
 import {
     PlayerSection,
     PlayerControlButtons,
@@ -6,8 +7,6 @@ import {
     PlayBackbar,
     PlaybackNumber,
 } from './Player.styled';
-import { useSpotify } from '../../hooks/useSpotify';
-import Progressbar from '../ProgressBar';
 
 function Player({ playbackState, setPlaybackState }) {
     const {
@@ -16,7 +15,6 @@ function Player({ playbackState, setPlaybackState }) {
         skipPrevious,
         skipNext,
         toggleRepeat,
-        handlePosition,
     } = useSpotify();
 
     const handlePlay = () => {
@@ -34,7 +32,6 @@ function Player({ playbackState, setPlaybackState }) {
     const handleNext = () => {
         skipNext(playbackState, setPlaybackState);
     };
-
     return (
         <PlayerSection>
             <PlayerControlButtons>
@@ -122,9 +119,8 @@ function Player({ playbackState, setPlaybackState }) {
                 </div>
             </PlayerControlButtons>
             <PlayBackbar>
-                <PlaybackNumber>0:00</PlaybackNumber>
-                <input type="range" id="" />
-                <PlaybackNumber>0:00</PlaybackNumber>
+                {/* <PlaybackNumber>{playbackState.progress}</PlaybackNumber>
+                <PlaybackNumber>{playbackState.duration}</PlaybackNumber> */}
             </PlayBackbar>
         </PlayerSection>
     );

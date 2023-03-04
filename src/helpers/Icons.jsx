@@ -9,7 +9,8 @@ import {
     ActualSoundContainer,
     DeviceContainer,
     LinkContainer,
-} from "./Icons.styled";
+    NavigateButton,
+} from './Icons.styled';
 
 export const Logo = () => (
     <Svg viewBox="0 0 1134 340" className="fwTMCeAaUoWDj9WcQbgy">
@@ -273,4 +274,61 @@ export const LinkIcon = () => (
             <path d="M15 1v4.993a.75.75 0 11-1.5 0V3.56L8.78 8.28a.75.75 0 01-1.06-1.06l4.72-4.72h-2.433a.75.75 0 010-1.5H15z"></path>
         </svg>
     </LinkContainer>
+);
+
+export const ArrowBack = () => (
+    <NavigateButton>
+        <svg
+            role="img"
+            height="16"
+            width="16"
+            aria-hidden="true"
+            className="Svg-sc-ytk21e-0 kcBZLg IYDlXmBmmUKHveMzIPCF"
+            viewBox="0 0 16 16"
+            data-encore-id="icon"
+        >
+            <path d="M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z"></path>
+        </svg>
+    </NavigateButton>
+);
+export const ArrowFront = () => (
+    <NavigateButton>
+        <svg
+            role="img"
+            height="16"
+            width="16"
+            aria-hidden="true"
+            className="Svg-sc-ytk21e-0 kcBZLg IYDlXmBmmUKHveMzIPCF"
+            viewBox="0 0 16 16"
+            data-encore-id="icon"
+        >
+            <path d="M4.97.47a.75.75 0 0 0 0 1.06L11.44 8l-6.47 6.47a.75.75 0 1 0 1.06 1.06L13.56 8 6.03.47a.75.75 0 0 0-1.06 0z"></path>
+        </svg>
+    </NavigateButton>
+);
+export const OpenUserMenu = () => (
+    <svg
+        role="img"
+        height="16"
+        width="16"
+        aria-hidden="true"
+        class="Svg-sc-ytk21e-0 uPxdw eAXFT6yvz37fvS1lmt6k"
+        viewBox="0 0 16 16"
+        data-encore-id="icon"
+    >
+        <path d="m14 6-6 6-6-6h12z"></path>
+    </svg>
+);
+export const CloseUserMenu = () => (
+    <svg
+        role="img"
+        height="16"
+        width="16"
+        aria-hidden="true"
+        class="Svg-sc-ytk21e-0 uPxdw eAXFT6yvz37fvS1lmt6k"
+        viewBox="0 0 16 16"
+        data-encore-id="icon"
+    >
+        <path d="M14 10 8 4l-6 6h12z"></path>
+    </svg>
 );

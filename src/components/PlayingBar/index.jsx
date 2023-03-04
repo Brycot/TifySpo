@@ -1,17 +1,16 @@
-import React, { useEffect, useContext, useState, useRef } from "react";
+import React, { useEffect, useContext, useState, useRef } from 'react';
 
-import SongInfoPlayer from "../CurrentSongInfo/CurrentSongInfo";
-import Player from "../Player";
-import AddonsControl from "../AddonsControl";
-import { Footer } from "./PlayingBar.styled";
-import { useSpotify } from "../../hooks/useSpotify";
-// import useAuth from "../../hooks/useAuth";
-import useRequest from "../../hooks/useRequest";
-import { CurrentTrackContext } from "../../utils/context";
+import SongInfoPlayer from '../CurrentSongInfo/CurrentSongInfo';
+import Player from '../Player';
+import AddonsControl from '../AddonsControl';
+import { Footer } from './PlayingBar.styled';
+import { useSpotify } from '../../hooks/useSpotify';
+import useRequest from '../../hooks/useRequest';
+import { CurrentTrackContext } from '../../utils/context';
 
 function PlayingBar() {
     const { toggleMusic } = useSpotify();
-    const token = localStorage.getItem("access_token");
+    const token = localStorage.getItem('access_token');
     const { currentTrack, setCurrentTrack } = useContext(CurrentTrackContext);
     const { reqWithToken } = useRequest();
     let tifySpoPlayer = useRef(null);
@@ -26,39 +25,39 @@ function PlayingBar() {
     });
 
     const loadScript = () => {
-        const script = document.createElement("script");
-        script.id = "spotify-player";
-        script.type = "text/javascript";
-        script.async = "async";
-        script.defer = "defer";
-        script.src = "https://sdk.scdn.co/spotify-player.js";
+        const script = document.createElement('script');
+        script.id = 'spotify-player';
+        script.type = 'text/javascript';
+        script.async = 'async';
+        script.defer = 'defer';
+        script.src = 'https://sdk.scdn.co/spotify-player.js';
         document.body.appendChild(script);
     };
 
     const InitializePlayer = () => {
-        console.log("initializing TifySpo 👾");
+        console.log('initializing TifySpo 👾');
         let { Player } = window.Spotify;
         tifySpoPlayer = new Player({
-            name: "TifySpo",
+            name: 'TifySpo',
             getOAuthToken: (cb) => {
                 cb(token);
             },
         });
         // Error handling
-        tifySpoPlayer.addListener("initialization_error", ({ message }) => {
+        tifySpoPlayer.addListener('initialization_error', ({ message }) => {
             console.log(message);
         });
-        tifySpoPlayer.addListener("authentication_error", ({ message }) => {
+        tifySpoPlayer.addListener('authentication_error', ({ message }) => {
             console.log(message);
         });
-        tifySpoPlayer.addListener("account_error", ({ message }) => {
+        tifySpoPlayer.addListener('account_error', ({ message }) => {
             console.log(message);
         });
-        tifySpoPlayer.addListener("playback_error", ({ message }) => {
+        tifySpoPlayer.addListener('playback_error', ({ message }) => {
             console.log(message);
         });
         // Playback status updates
-        tifySpoPlayer.addListener("player_state_changed", (state) => {
+        tifySpoPlayer.addListener('player_state_changed', (state) => {
             try {
                 if (state) {
                     const {
@@ -87,12 +86,12 @@ function PlayingBar() {
             }
         });
         // Ready
-        tifySpoPlayer.addListener("ready", ({ device_id }) => {
-            console.log("Ready with Device ID", device_id);
+        tifySpoPlayer.addListener('ready', ({ device_id }) => {
+            console.log('Ready with Device ID', device_id);
         });
         // Not Ready
-        tifySpoPlayer.addListener("not_ready", ({ device_id }) => {
-            console.log("Device ID has gone offline", device_id);
+        tifySpoPlayer.addListener('not_ready', ({ device_id }) => {
+            console.log('Device ID has gone offline', device_id);
         });
         // Connect the player!
         tifySpoPlayer.connect();
@@ -100,7 +99,7 @@ function PlayingBar() {
 
     const getPlayerInfo = (_) => {
         const reqInformations = reqWithToken(
-            "https://api.spotify.com/v1/me/player",
+            'https://api.spotify.com/v1/me/player',
             token
         );
         const getFunc = async () => {
@@ -121,12 +120,12 @@ function PlayingBar() {
                         ...state,
                         play: is_playing,
                         shuffle: shuffle_state,
-                        repeat: repeat_state !== "off",
+                        repeat: repeat_state !== 'off',
                         duration: item.duration_ms,
                         progress: progress_ms,
                     }));
                 } else if (response.status === 202) {
-                    console.log("fewfwe");
+                    console.log('fewfwe');
                 }
             } catch (error) {
                 console.log(error);
@@ -134,7 +133,6 @@ function PlayingBar() {
         };
         getFunc();
     };
-
 
     useEffect(() => {
         // initialize script
@@ -148,7 +146,7 @@ function PlayingBar() {
         // eslint-disable-next-line
     }, []);
     return (
-        <Footer onClick={() => {}}>
+        <Footer>
             <SongInfoPlayer currentTrack={currentTrack} />
             <Player
                 playbackState={playbackState}

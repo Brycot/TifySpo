@@ -1,5 +1,4 @@
-import axios from 'axios';
-import { useState } from 'react';
+
 import useRequest from './useRequest';
 
 export const useSpotify = () => {
@@ -180,21 +179,14 @@ export const useSpotify = () => {
         seekVolume();
     };
 
-    const handlePosition = (ratio, setPosition) => {
-        const integer = Math.round(ratio * 60000);
-        console.log(integer);
+    const handlePosition = (progress, setProgress) => {
         const seekPosition = async (_) => {
             const requestFunc = updateWithToken(
-                `https://api.spotify.com/v1/me/player/seek?position_ms=${integer}`,
+                `https://api.spotify.com/v1/me/player/seek?position_ms=${progress}`,
                 spotifyToken
             );
             try {
-                const response = await requestFunc();
-                if (response.status === 204) {
-                    setPosition(ratio);
-                } else {
-                    console.log('Opps, something went wrong!');
-                }
+                await requestFunc();
             } catch (error) {
                 console.log(error);
             }

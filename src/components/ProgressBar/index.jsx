@@ -1,17 +1,24 @@
 import React from 'react';
 
-export default function Progressbar({ volume, setVolume, handleChange }) {
+export default function Progressbar({
+    value,
+    setValue,
+    min,
+    max,
+    handleChange,
+}) {
     const onChangeInput = (event) => {
-        setVolume(event.target.value);
-        handleChange();
+        setValue(event.target.value);
+        handleChange(event.target.value);
     };
     return (
         <input
             type="range"
-            min="0"
-            value={volume}
+            value={value}
             onChange={onChangeInput}
-            max="100"
+            min={min}
+            step="1"
+            max={max}
         />
     );
 }

@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Layout from '../components/layout/';
-import { AuthContext } from '../utils/context';
 
 import Login from '../views/LogIn';
 import Home from '../views/Home';
@@ -15,6 +14,7 @@ function RoutesTifyspo() {
                 <Route path="/" element={<Layout />}>
                     <Route exact path="/home" element={<Home />} />
                     <Route exact path="/search" element={<Search />} />
+                    <Route exact path="/library" element={<Search />} />
                     <Route exact path="/callback" element={<Callback />} />
                 </Route>
 
