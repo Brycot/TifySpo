@@ -1,4 +1,3 @@
-import React, { useEffect, useContext, useState, useRef } from "react";
 import {
     PlayerSection,
     PlayerControlButtons,
@@ -6,44 +5,11 @@ import {
     Svg,
     PlayBackbar,
     PlaybackNumber,
-} from "./Player.styled";
-import { useSpotify } from "../../hooks/useSpotify";
-import useRequest from "../../hooks/useRequest";
-import Progressbar from "../ProgressBar";
+} from './Player.styled';
+import { useSpotify } from '../../hooks/useSpotify';
+import Progressbar from '../ProgressBar';
 
 function Player({ playbackState, setPlaybackState }) {
-    const token = localStorage.getItem("access_token");
-    const { reqWithToken } = useRequest();
-    const [progress, setProgress] = useState(0);
-    const [maxDuration, setMaxDuration] = useState(0);
-    let minutes = Math.floor(maxDuration / 60000);
-    let seconds = ((maxDuration % 60000) / 1000).toFixed(0);
-    let duracionMaxima = minutes + ":" + seconds;
-    const getProgress = (_) => {
-        const reqInformations = reqWithToken(
-            "https://api.spotify.com/v1/me/player",
-            token
-        );
-        const getFunc = async () => {
-            try {
-                const response = await reqInformations();
-                if (response.status === 200) {
-                    const { data } = response;
-                    const { progress_ms, item } = data;
-                    setMaxDuration(item.duration_ms);
-                    setProgress(progress_ms);
-                } else if (response.status === 202) {
-                    console.log("fewfwe");
-                }
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        getFunc();
-    };
-    useEffect(() => {
-        getProgress();
-    }, [progress]);
     const {
         toggleMusic,
         toggleShuffle,
@@ -52,6 +18,7 @@ function Player({ playbackState, setPlaybackState }) {
         toggleRepeat,
         handlePosition,
     } = useSpotify();
+
     const handlePlay = () => {
         toggleMusic(playbackState, setPlaybackState);
     };
@@ -75,7 +42,7 @@ function Player({ playbackState, setPlaybackState }) {
                     <Button onClick={handleShuffle}>
                         <Svg
                             colorState={
-                                playbackState.shuffle ? "verde" : "gris"
+                                playbackState.shuffle ? 'verde' : 'gris'
                             }
                             role="img"
                             height="16"
@@ -143,7 +110,7 @@ function Player({ playbackState, setPlaybackState }) {
                     </Button>
                     <Button onClick={handleRepeat}>
                         <Svg
-                            colorState={playbackState.repeat ? "verde" : "gris"}
+                            colorState={playbackState.repeat ? 'verde' : 'gris'}
                             role="img"
                             height="16"
                             width="16"
@@ -155,15 +122,9 @@ function Player({ playbackState, setPlaybackState }) {
                 </div>
             </PlayerControlButtons>
             <PlayBackbar>
-                <PlaybackNumber>{progress}</PlaybackNumber>
-                {/* <Progressbar
-                    isSongDuration={true}
-                    duration={maxDuration}
-                    value={progress}
-                    setValue={(ratio) => handlePosition(ratio, setProgress)}
-                    className="progress_position"
-                /> */}
-                <PlaybackNumber>{duracionMaxima}</PlaybackNumber>
+                <PlaybackNumber>0:00</PlaybackNumber>
+                <input type="range" id="" />
+                <PlaybackNumber>0:00</PlaybackNumber>
             </PlayBackbar>
         </PlayerSection>
     );

@@ -42,7 +42,9 @@ const useAuth = () => {
             const body = await response.json();
             if (response.status === 200) {
                 const access_token = body.access_token;
+                const expires_in = body.expires_in;
                 localStorage.setItem('access_token', access_token);
+                localStorage.setItem('expires_in', expires_in);
                 window.location.href = '/home';
             }
         } catch (error) {

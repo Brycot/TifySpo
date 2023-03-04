@@ -1,17 +1,20 @@
-import React, { useState } from "react";
-import { useSpotify } from "../../hooks/useSpotify";
-import Devices from "../Devices";
-import ProgressBar from "../ProgressBar";
-import { AddonsControlSection, Button, Svg } from "./AddonsControl.styled";
+import React, { useState } from 'react';
+import { useSpotify } from '../../hooks/useSpotify';
+import Devices from '../Devices';
+import ProgressBar from '../ProgressBar';
+import { AddonsControlSection, Button, Svg } from './AddonsControl.styled';
 
 function AddonsControl() {
-    const [volume, setVolume] = useState(0.5);
+    const [volume, setVolume] = useState(50);
 
     const { handleVolume } = useSpotify();
 
     const [viewDevices, setViewDevices] = useState(false);
     const handleView = () => {
         setViewDevices(!viewDevices);
+    };
+    const onChangeVolume = () => {
+        handleVolume(volume, setVolume);
     };
     return (
         <AddonsControlSection>
@@ -61,9 +64,9 @@ function AddonsControl() {
                     </Svg>
                 </Button>
                 <ProgressBar
-                    value={volume}
-                    setValue={(ratio) => handleVolume(ratio, setVolume)}
-                    className="progress_volume"
+                    volume={volume}
+                    setVolume={setVolume}
+                    handleChange={onChangeVolume}
                 />
             </div>
         </AddonsControlSection>

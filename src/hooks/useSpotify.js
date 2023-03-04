@@ -1,9 +1,9 @@
-import axios from "axios";
-import { useState } from "react";
-import useRequest from "./useRequest";
+import axios from 'axios';
+import { useState } from 'react';
+import useRequest from './useRequest';
 
 export const useSpotify = () => {
-    const spotifyToken = localStorage.getItem("access_token");
+    const spotifyToken = localStorage.getItem('access_token');
     const { updateWithToken, postWithToken, getWithToken } = useRequest();
     // reproducir musica
     const toggleMusic = (playbackState, setPlaybackState) => {
@@ -23,9 +23,9 @@ export const useSpotify = () => {
                         ...state,
                         play: !state.play,
                     }));
-                    console.log("bien", response);
+                    console.log('bien', response);
                 } else {
-                    console.log("mal", response);
+                    console.log('mal', response);
                     return;
                 }
             } catch (error) {
@@ -52,7 +52,7 @@ export const useSpotify = () => {
                     }));
                     console.log(playbackState);
                 } else {
-                    console.log("Opps, something went wrong!");
+                    console.log('Opps, something went wrong!');
                     return;
                 }
             } catch (error) {
@@ -66,14 +66,14 @@ export const useSpotify = () => {
     // canción anterior
     const skipPrevious = () => {
         const request = postWithToken(
-            "https://api.spotify.com/v1/me/player/previous",
+            'https://api.spotify.com/v1/me/player/previous',
             spotifyToken
         );
         const requestFunc = async (_) => {
             try {
                 const response = await request();
                 if (response.status !== 204) {
-                    console.log("Opps, something went wrong!");
+                    console.log('Opps, something went wrong!');
                     return;
                 }
             } catch (error) {
@@ -87,14 +87,14 @@ export const useSpotify = () => {
     // cancion siguiente
     const skipNext = () => {
         const request = postWithToken(
-            "https://api.spotify.com/v1/me/player/next",
+            'https://api.spotify.com/v1/me/player/next',
             spotifyToken
         );
         const requestFunc = async (_) => {
             try {
                 const response = await request();
                 if (response.status !== 204) {
-                    console.log("Opps, something went wrong!");
+                    console.log('Opps, something went wrong!');
                     return;
                 }
             } catch (error) {
@@ -123,11 +123,11 @@ export const useSpotify = () => {
                     }));
                     console.log(
                         `Repeat mode ${
-                            playbackState.repeat ? "disabled" : "enabled"
+                            playbackState.repeat ? 'disabled' : 'enabled'
                         }`
                     );
                 } else {
-                    console.log("Opps, something went wrong!");
+                    console.log('Opps, something went wrong!');
                     return;
                 }
             } catch (error) {
@@ -141,7 +141,7 @@ export const useSpotify = () => {
     // transferir el playback a uno de los dispositivos disponibles
     const transferPlayBack = (id) => {
         const body = {
-            device_ids: [id]
+            device_ids: [id],
         };
         const request = updateWithToken(
             `https://api.spotify.com/v1/me/player`,
@@ -154,7 +154,7 @@ export const useSpotify = () => {
                 if (response.status === 202) {
                     console.log('ya');
                 } else {
-                    console.log("Opps");
+                    console.log('Opps');
                     return;
                 }
             } catch (error) {
@@ -165,29 +165,29 @@ export const useSpotify = () => {
         requestFunc();
     };
 
-    const handleVolume = (ratio, setVolume) => {
-        const integer = Math.round(ratio * 100);
-        const seekVolume = async _ => {
-            const requestFunc = updateWithToken(`https://api.spotify.com/v1/me/player/volume?volume_percent=${integer}`, spotifyToken);
+    const handleVolume = (volume, setVolume) => {
+        const seekVolume = async (_) => {
+            const requestFunc = updateWithToken(
+                `https://api.spotify.com/v1/me/player/volume?volume_percent=${volume}`,
+                spotifyToken
+            );
             try {
-                const response = await requestFunc();
-                if (response.status === 204) {
-                    setVolume(ratio);
-                } else {
-                    console.log('Opps, something went wrong!');
-                }
+                await requestFunc();
             } catch (error) {
-                console.log(error)
+                console.log(error);
             }
-        }
+        };
         seekVolume();
     };
 
     const handlePosition = (ratio, setPosition) => {
         const integer = Math.round(ratio * 60000);
         console.log(integer);
-        const seekPosition = async _ => {
-            const requestFunc = updateWithToken(`https://api.spotify.com/v1/me/player/seek?position_ms=${integer}`, spotifyToken);
+        const seekPosition = async (_) => {
+            const requestFunc = updateWithToken(
+                `https://api.spotify.com/v1/me/player/seek?position_ms=${integer}`,
+                spotifyToken
+            );
             try {
                 const response = await requestFunc();
                 if (response.status === 204) {
@@ -196,9 +196,9 @@ export const useSpotify = () => {
                     console.log('Opps, something went wrong!');
                 }
             } catch (error) {
-                console.log(error)
+                console.log(error);
             }
-        }
+        };
         seekPosition();
     };
     return {
@@ -209,6 +209,6 @@ export const useSpotify = () => {
         toggleRepeat,
         transferPlayBack,
         handleVolume,
-        handlePosition
+        handlePosition,
     };
 };
