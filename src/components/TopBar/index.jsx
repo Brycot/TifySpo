@@ -1,14 +1,26 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowBack, ArrowFront, OpenUserMenu } from '../../helpers/Icons';
 
 import { Header } from './TopBar.styled';
 
 function Topbar({ userInfo }) {
+    const [searchQuery, setsearchQuery] = useState('');
     const { pathname } = useLocation();
+    const navigate = useNavigate();
     const handleToggleMenu = () => {
         console.log('dsdd');
     };
+
+    const handleChange = ({ target }) => {
+        setsearchQuery(target.value);
+    };
+    useEffect(() => {
+        if (pathname.includes('/search')) {
+            navigate(`search/${searchQuery}`);
+        }
+    }, [searchQuery]);
+
     return (
         <Header>
             <div className="Historybuttons__Container">
@@ -16,7 +28,7 @@ function Topbar({ userInfo }) {
                 <ArrowFront />
             </div>
 
-            {pathname === '/search' && (
+            {pathname.includes('/search') && (
                 <div className="Input_Container">
                     <form>
                         <svg
@@ -33,6 +45,8 @@ function Topbar({ userInfo }) {
                         <input
                             type="text"
                             placeholder="¿Qué quieres escuchar?"
+                            value={searchQuery}
+                            onChange={handleChange}
                         />
                     </form>
                 </div>

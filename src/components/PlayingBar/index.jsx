@@ -145,6 +145,10 @@ function PlayingBar() {
         // };
         // eslint-disable-next-line
     }, []);
+
+    useEffect(() => {
+        getPlayerInfo();
+    }, [playbackState]);
     return (
         <Footer>
             <SongInfoPlayer currentTrack={currentTrack} />

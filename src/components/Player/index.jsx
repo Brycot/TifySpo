@@ -1,4 +1,6 @@
+import { getTimePlayer } from '../../helpers/getTimePlayer';
 import { useSpotify } from '../../hooks/useSpotify';
+import Progressbar from '../ProgressBar';
 import {
     PlayerSection,
     PlayerControlButtons,
@@ -9,14 +11,11 @@ import {
 } from './Player.styled';
 
 function Player({ playbackState, setPlaybackState }) {
-    const {
-        toggleMusic,
-        toggleShuffle,
-        skipPrevious,
-        skipNext,
-        toggleRepeat,
-    } = useSpotify();
+    const { toggleMusic, toggleShuffle, skipPrevious, skipNext, toggleRepeat } =
+        useSpotify();
 
+    const songProgress = getTimePlayer(playbackState.progress);
+    const songduration = getTimePlayer(playbackState.duration);
     const handlePlay = () => {
         toggleMusic(playbackState, setPlaybackState);
     };
@@ -119,8 +118,13 @@ function Player({ playbackState, setPlaybackState }) {
                 </div>
             </PlayerControlButtons>
             <PlayBackbar>
-                {/* <PlaybackNumber>{playbackState.progress}</PlaybackNumber>
-                <PlaybackNumber>{playbackState.duration}</PlaybackNumber> */}
+                <PlaybackNumber>{songProgress}</PlaybackNumber>
+                <Progressbar
+                    value={playbackState.progress}
+                    min={0}
+                    max={playbackState.duration}
+                />
+                <PlaybackNumber>{songduration}</PlaybackNumber>
             </PlayBackbar>
         </PlayerSection>
     );

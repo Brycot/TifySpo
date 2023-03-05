@@ -13,7 +13,7 @@ function RoutesTifyspo() {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route exact path="/home" element={<Home />} />
-                    <Route exact path="/search" element={<Search />} />
+                    <Route path="/search?/:querySearch" element={<Search />} />
                     <Route exact path="/library" element={<Search />} />
                     <Route exact path="/callback" element={<Callback />} />
                 </Route>
