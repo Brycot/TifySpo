@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Aside = styled.aside`
     -webkit-box-orient: vertical;
@@ -25,6 +25,10 @@ export const WrapperLogo = styled.div`
         margin-bottom: 26px;
         text-decoration: none;
         color: white;
+    }
+
+    & a svg {
+        fill: white;
     }
 `;
 

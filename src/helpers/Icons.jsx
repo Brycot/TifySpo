@@ -13,7 +13,7 @@ import {
 } from './Icons.styled';
 
 export const Logo = () => (
-    <Svg viewBox="0 0 1134 340" className="fwTMCeAaUoWDj9WcQbgy">
+    <Svg active viewBox="0 0 1134 340" className="fwTMCeAaUoWDj9WcQbgy">
         <title>Spotify</title>
         <path
             fill="currentColor"

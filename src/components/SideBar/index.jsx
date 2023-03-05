@@ -53,11 +53,18 @@ function SideBar() {
             <OptionsUsers>
                 <ul>
                     <PrimaryLink
+                        link={'/playlist'}
                         icon={<CreatePlaylistIcon />}
                         text="Crear playlist"
                     />
-                    <PrimaryLink icon={<YourFavsIcon />} text="Tus me gusta" />
+
                     <PrimaryLink
+                        icon={<YourFavsIcon />}
+                        link={'/collection/tracks'}
+                        text="Tus me gusta"
+                    />
+                    <PrimaryLink
+                        link={'/playlist'}
                         icon={<YourEpisodesIcon />}
                         text="Tus episodios"
                     />
@@ -73,20 +80,6 @@ function SideBar() {
                         items.map(({ name, id }, index) => (
                             <Playlist draggable="false" name={name} key={id} />
                         ))}
-                    {/* <Playlist />
-                    <Playlist />
-                    <Playlist />
-                    <Playlist />
-                    <Playlist />
-                    <Playlist />
-                    <Playlist />
-                    <Playlist />
-                    <Playlist />
-                    <Playlist />
-                    <Playlist />
-                    <Playlist />
-                    <Playlist />
-                    <Playlist /> */}
                 </ul>
             </PlaylistContainer>
             <DownloadContainer />

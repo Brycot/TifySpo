@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Svg = styled.svg`
     fill: currentcolor;
     max-width: 131px;
-    color: #b3b3b3;
+    color: ${(props) => (props.active ? '#fff' : '#b3b3b3')};
 `;
 
 export const Div = styled.div`
