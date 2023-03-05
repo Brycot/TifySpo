@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import useAuth from '../../hooks/useAuth';
 
@@ -11,6 +11,7 @@ function Login() {
 
     const handleLogin = () => {
         login();
+
     };
 
     return (

@@ -1,11 +1,10 @@
-import "./App.css";
-import RoutesTifyspo from "./routes/Routes";
+import './App.css';
+import RoutesTifyspo from './routes/Routes';
 
 function App() {
     return (
-        <RoutesTifyspo />
-    )
-    
+            <RoutesTifyspo />
+    );
 }
 
 export default App;

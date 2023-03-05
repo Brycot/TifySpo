@@ -1,4 +1,5 @@
 import React from 'react';
+import { Input } from './ProgressBar.styled';
 
 export default function Progressbar({
     value,
@@ -12,7 +13,7 @@ export default function Progressbar({
         handleChange(event.target.value);
     };
     return (
-        <input
+        <Input
             type="range"
             value={value}
             onChange={onChangeInput}
