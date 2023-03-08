@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const CardContainer = styled.div`
     --column-width: 219px;
@@ -111,6 +111,8 @@ export const CardContainer = styled.div`
     & .Card__Title__ArtistContainer {
         display: flex;
         gap: 5px;
+        line-height: 15px;
+        flex-wrap: wrap;
     }
     & .Card__Title__Artist {
         font-size: 0.875rem;
