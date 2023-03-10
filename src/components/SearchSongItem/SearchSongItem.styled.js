@@ -13,6 +13,7 @@ export const SongContainer = styled.div`
     }
     & .songImage_Container {
         position: relative;
+        display: flex;
     }
     & .songImage_Container button {
         border: 0;
@@ -28,6 +29,7 @@ export const SongContainer = styled.div`
     }
     &:hover {
         background-color: #2a2a2a;
+        border-radius: 4px;
     }
     & .songImage_Container svg {
         fill: white;

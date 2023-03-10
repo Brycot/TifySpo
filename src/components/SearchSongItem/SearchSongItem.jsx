@@ -1,13 +1,33 @@
 import React from 'react';
 import { PlayButtonSongItem } from '../../helpers/Icons';
+import useRequest from '../../hooks/useRequest';
 import { TitleSong } from '../CurrentSongInfo/CurrentSongInfo.styled';
 import { Artist, SongContainer } from './SearchSongItem.styled';
 
 export const SearchSongItem = ({ track }) => {
+    const accessToken = localStorage.getItem('access_token');
+
+    const { updateWithToken } = useRequest();
+
+    const handlePlaySong = () => {
+        const body = {
+            uris: [track.uri],
+        };
+        const requestFunc = updateWithToken(
+            `https://api.spotify.com/v1/me/player/play`,
+            accessToken,
+            body
+        );
+        const requestMusic = async () => {
+            const response = await requestFunc();
+        };
+        requestMusic();
+    };
+
     return (
         <SongContainer key={track.id}>
-            <div className='songImage_Container'>
-                <button>
+            <div className="songImage_Container">
+                <button onClick={handlePlaySong}>
                     <PlayButtonSongItem />
                 </button>
 

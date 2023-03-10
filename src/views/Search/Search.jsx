@@ -56,9 +56,11 @@ function Search() {
                         <h2>Canciones</h2>
                     )}
                 </Title>
-                {tracks.map((track) => (
-                    <SearchSongItem track={track} />
-                ))}
+                <div>
+                    {tracks.map((track) => (
+                        <SearchSongItem track={track} />
+                    ))}
+                </div>
             </SectionSearch>
         </>
     );
