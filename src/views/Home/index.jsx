@@ -101,6 +101,7 @@ function Home() {
                                     uri={item?.track.uri}
                                     img={item?.track?.album?.images[0]?.url}
                                     artists={item?.track?.artists}
+                                    track
                                 />
                             ))}
                     </GridItems>

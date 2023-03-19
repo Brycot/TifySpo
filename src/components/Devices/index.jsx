@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import useRequest from "../../hooks/useRequest";
-import { useSpotify } from "../../hooks/useSpotify";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import useRequest from '../../hooks/useRequest';
+import { useSpotify } from '../../hooks/useSpotify';
 
 import {
     DevicesContainer,
@@ -11,7 +11,7 @@ import {
     ActualDeviceContainer,
     DeviceOption,
     Problem,
-} from "./Devices.styled";
+} from './Devices.styled';
 
 import {
     ActualDeviceIcon,
@@ -19,11 +19,11 @@ import {
     OptionDevice,
     DeviceIcon,
     LinkIcon,
-} from "../../helpers/Icons";
+} from '../../helpers/Icons';
 
 function Devices({ children }) {
     const [devicesAllow, setDevicesAllow] = useState([]);
-    const spotifyToken = localStorage.getItem("access_token");
+    const spotifyToken = localStorage.getItem('access_token');
     const { getWithToken, updateWithToken } = useRequest();
     const { transferPlayBack } = useSpotify();
 
@@ -33,12 +33,11 @@ function Devices({ children }) {
     const devicesAvailable = devicesAllow.filter(
         (device) => device.is_active === false
     );
-
     function getDevices() {
         const cancelSource = axios.CancelToken.source();
 
         const request = getWithToken(
-            "https://api.spotify.com/v1/me/player/devices",
+            'https://api.spotify.com/v1/me/player/devices',
             spotifyToken,
             cancelSource
         );
@@ -61,8 +60,7 @@ function Devices({ children }) {
         getDevices();
     }, [devicesAllow]);
     return (
-        <DevicesContainer
-        >
+        <DevicesContainer>
             <div className="Devices">
                 {actualDevice && (
                     <ActualDeviceContainer>
@@ -98,7 +96,10 @@ function Devices({ children }) {
                     </>
                 )}
             </div>
-            <Problem href="https://support.spotify.com/co/article/spotify-connect/">
+            <Problem
+                target="_blank"
+                href="https://support.spotify.com/co/article/spotify-connect/"
+            >
                 <p>¿Tu dispositivo no aparece?</p>
                 <LinkIcon />
             </Problem>

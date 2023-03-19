@@ -4,15 +4,20 @@ import { CardContainer } from './ItemCard.styled';
 import { PlayButtonSong } from '../../helpers/Icons';
 import useRequest from '../../hooks/useRequest';
 
-function ItemCard({ name, img, uri, artists }) {
+function ItemCard({ name, img, uri, artists, track }) {
     const accessToken = localStorage.getItem('access_token');
 
     const { updateWithToken } = useRequest();
 
     function handlePlaySong() {
-        const body = {
-            uris: [uri],
+        let body = {
+            context_uri: uri,
         };
+        if (track) {
+            body = {
+                uris: [uri],
+            };
+        }
         const requestFunc = updateWithToken(
             `https://api.spotify.com/v1/me/player/play`,
             accessToken,

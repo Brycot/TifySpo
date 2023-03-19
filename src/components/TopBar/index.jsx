@@ -20,7 +20,9 @@ function Topbar({ userInfo }) {
             navigate(`search/${searchQuery}`);
         }
     }, [searchQuery]);
-
+    const onSubmit = (e) => {
+        e.preventDefault();
+    };
     return (
         <Header>
             <div className="Historybuttons__Container">
@@ -30,7 +32,7 @@ function Topbar({ userInfo }) {
 
             {pathname.includes('/search') && (
                 <div className="Input_Container">
-                    <form>
+                    <form onSubmit={onSubmit}>
                         <svg
                             role="img"
                             height="24"

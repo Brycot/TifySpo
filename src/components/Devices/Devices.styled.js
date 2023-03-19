@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const DevicesContainer = styled.section`
     position: absolute;
@@ -43,13 +43,13 @@ export const DeviceTitle = styled.h3`
     height: 28.8px;
 `;
 
-export const DeviceName = styled.p`
+export const DeviceName = styled.div`
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
     margin-block: 0px;
     font-size: 1rem;
     font-weight: 400;
-    color: ${(props) => (props.actual ? "#1ed760" : "white")};
+    color: ${(props) => (props.actual ? '#1ed760' : 'white')};
     display: flex;
     gap: 6px;
 `;

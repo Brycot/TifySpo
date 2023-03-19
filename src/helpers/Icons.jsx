@@ -195,17 +195,17 @@ export const PlayButtonSong = () => (
 
 export const PlayButtonSongItem = () => (
     // <DivPlayPauseSongItem>
-        <svg
-            role="img"
-            height="24"
-            width="24"
-            aria-hidden="true"
-            viewBox="0 0 24 24"
-            data-encore-id="icon"
-            className="Svg-sc-ytk21e-0 uPxdw"
-        >
-            <path d="M7.05 3.606l13.49 7.788a.7.7 0 010 1.212L7.05 20.394A.7.7 0 016 19.788V4.212a.7.7 0 011.05-.606z"></path>
-        </svg>
+    <svg
+        role="img"
+        height="24"
+        width="24"
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        data-encore-id="icon"
+        className="Svg-sc-ytk21e-0 uPxdw"
+    >
+        <path d="M7.05 3.606l13.49 7.788a.7.7 0 010 1.212L7.05 20.394A.7.7 0 016 19.788V4.212a.7.7 0 011.05-.606z"></path>
+    </svg>
     // </DivPlayPauseSongItem>
 );
 
@@ -329,7 +329,7 @@ export const OpenUserMenu = () => (
         height="16"
         width="16"
         aria-hidden="true"
-        class="Svg-sc-ytk21e-0 uPxdw eAXFT6yvz37fvS1lmt6k"
+        className="Svg-sc-ytk21e-0 uPxdw eAXFT6yvz37fvS1lmt6k"
         viewBox="0 0 16 16"
         data-encore-id="icon"
     >
@@ -342,7 +342,7 @@ export const CloseUserMenu = () => (
         height="16"
         width="16"
         aria-hidden="true"
-        class="Svg-sc-ytk21e-0 uPxdw eAXFT6yvz37fvS1lmt6k"
+        className="Svg-sc-ytk21e-0 uPxdw eAXFT6yvz37fvS1lmt6k"
         viewBox="0 0 16 16"
         data-encore-id="icon"
     >

@@ -13,11 +13,22 @@ export const Title = styled.div`
     -webkit-tap-highlight-color: transparent;
     margin-block: 0px;
     display: flex;
-    margin-bottom: 16px;
     height: 37px;
     color: #ffff;
     & h1 {
         font-size: 2rem;
         font-weight: 700;
     }
+`;
+
+export const AlbumContainer = styled.div`
+    --column-width: 213px;
+    --column-count: 6;
+    --grid-gap: 24px;
+    grid-auto-rows: 0;
+    grid-template-rows: 1fr;
+    overflow: hidden;
+    grid-gap: var(--grid-gap);
+    display: grid;
+    grid-template-columns: repeat(var(--column-count), minmax(0, 209px));
 `;

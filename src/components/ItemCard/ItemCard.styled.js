@@ -19,7 +19,7 @@ export const CardContainer = styled.div`
     position: relative;
     transition: all 0.3s ease;
     width: 100%;
-    min-width: 29px;
+    min-width: 150px;
     max-width: 209px;
     &:hover {
         background-color: #282828;

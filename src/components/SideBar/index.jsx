@@ -53,18 +53,18 @@ function SideBar() {
             <OptionsUsers>
                 <ul>
                     <PrimaryLink
-                        link={'/playlist'}
+                        link={'/homed'}
                         icon={<CreatePlaylistIcon />}
                         text="Crear playlist"
                     />
 
                     <PrimaryLink
                         icon={<YourFavsIcon />}
-                        link={'/collection/tracks'}
+                        link={'/homed'}
                         text="Tus me gusta"
                     />
                     <PrimaryLink
-                        link={'/playlist'}
+                        link={'/homed'}
                         icon={<YourEpisodesIcon />}
                         text="Tus episodios"
                     />

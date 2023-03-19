@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { SectionSearch, Title } from './Search.styled';
+import { AlbumContainer, SectionSearch, Title } from './Search.styled';
 import useRequest from '../../hooks/useRequest';
 import { TitleSong } from '../../components/CurrentSongInfo/CurrentSongInfo.styled';
 import { SearchSongItem } from '../../components/SearchSongItem/SearchSongItem';
+import ItemCard from '../../components/ItemCard';
 
 function Search() {
     const { querySearch } = useParams();
@@ -35,7 +36,7 @@ function Search() {
                         setTracks(_tracks.items);
                         setAlbums(_albums.items);
                         setArtists(_artists.items);
-                        console.log(artists);
+                        console.log(albums);
                     }
                 } catch (error) {
                     console.log(error);
@@ -65,6 +66,17 @@ function Search() {
                         <Title>
                             <h2>Albumes</h2>
                         </Title>
+                        <AlbumContainer>
+                            {albums?.map((album) => (
+                                <ItemCard
+                                    key={album.id}
+                                    name={album.name}
+                                    artists={album.artists}
+                                    img={album.images[0]?.url}
+                                    uri={album.uri}
+                                />
+                            ))}
+                        </AlbumContainer>
                         <Title>
                             <h2>Artistas</h2>
                         </Title>

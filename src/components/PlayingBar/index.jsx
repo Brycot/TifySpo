@@ -9,7 +9,7 @@ import useRequest from '../../hooks/useRequest';
 import { CurrentTrackContext } from '../../utils/context';
 
 function PlayingBar() {
-    const { toggleMusic } = useSpotify();
+    const { transferPlayBack } = useSpotify();
     const token = localStorage.getItem('access_token');
     const { currentTrack, setCurrentTrack } = useContext(CurrentTrackContext);
     const { reqWithToken } = useRequest();
@@ -133,17 +133,11 @@ function PlayingBar() {
         };
         getFunc();
     };
-
     useEffect(() => {
         // initialize script
         loadScript();
         window.onSpotifyWebPlaybackSDKReady = () => InitializePlayer();
         getPlayerInfo();
-        // get current state of the player
-        // return () => {
-        //     tifySpoPlayer.disconnect();
-        // };
-        // eslint-disable-next-line
     }, []);
 
     useEffect(() => {
