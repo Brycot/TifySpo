@@ -31,4 +31,10 @@ export const GridContainer = styled.section`
     display: grid;
     grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
     min-width: var(--min-container-width);
+    @media (min-width: 1500px) {
+        --column-count: 6;
+    }
+    @media (min-width: 1700px) {
+        --column-count: 7;
+    }
 `;
