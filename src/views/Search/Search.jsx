@@ -35,7 +35,7 @@ function Search() {
                         setTracks(_tracks.items);
                         setAlbums(_albums.items);
                         setArtists(_artists.items);
-                        console.log(tracks);
+                        console.log(artists);
                     }
                 } catch (error) {
                     console.log(error);
@@ -45,22 +45,31 @@ function Search() {
 
         makeRequest();
     }, [querySearch]);
-    console.log(tracks[0]);
     return (
         <>
             <SectionSearch>
-                <Title>
-                    {pathname.length <= 8 ? (
+                {pathname.length <= 8 ? (
+                    <Title>
                         <h2>Explorar todo</h2>
-                    ) : (
-                        <h2>Canciones</h2>
-                    )}
-                </Title>
-                <div>
-                    {tracks.map((track) => (
-                        <SearchSongItem track={track} />
-                    ))}
-                </div>
+                    </Title>
+                ) : (
+                    <>
+                        <Title>
+                            <h2>Canciones</h2>
+                        </Title>
+                        <div>
+                            {tracks.map((track) => (
+                                <SearchSongItem track={track} />
+                            ))}
+                        </div>
+                        <Title>
+                            <h2>Albumes</h2>
+                        </Title>
+                        <Title>
+                            <h2>Artistas</h2>
+                        </Title>
+                    </>
+                )}
             </SectionSearch>
         </>
     );
