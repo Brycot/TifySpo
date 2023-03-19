@@ -36,7 +36,6 @@ function Search() {
                         setTracks(_tracks.items);
                         setAlbums(_albums.items);
                         setArtists(_artists.items);
-                        console.log(albums);
                     }
                 } catch (error) {
                     console.log(error);
@@ -77,9 +76,6 @@ function Search() {
                                 />
                             ))}
                         </AlbumContainer>
-                        <Title>
-                            <h2>Artistas</h2>
-                        </Title>
                     </>
                 )}
             </SectionSearch>

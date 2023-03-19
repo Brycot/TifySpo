@@ -53,7 +53,7 @@ function Topbar({ userInfo }) {
                     </form>
                 </div>
             )}
-            {pathname === '/library' && <h1>library</h1>}
+            {pathname === '/library' && <h4>My Library</h4>}
             <button onClick={handleToggleMenu} className="btnUser">
                 {userInfo.images && (
                     <img
