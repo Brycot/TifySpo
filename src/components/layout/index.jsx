@@ -11,6 +11,7 @@ import { PlaylistContext, CurrentTrackContext } from '../../utils/context';
 import axios from 'axios';
 
 function Layout() {
+    const navigate = useNavigate();
     const [playlists, setPlaylists] = useState([]);
     const [userInfo, setUserInfo] = useState({});
     const [currentTrack, setCurrentTrack] = useState({});
@@ -40,6 +41,7 @@ function Layout() {
                     typeof _userInfo !== 'undefined' &&
                     typeof _userPlaylists !== 'undefined'
                 ) {
+                    navigate('/home');
                     setUserInfo(_userInfo.data);
                     setPlaylists(_userPlaylists.data);
                 }
