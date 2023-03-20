@@ -14,6 +14,7 @@ export const CurrentTrackContext = createContext({
 export const AuthContext = createContext({});
 
 export const AuthContextProvider = ({ children }) => {
+    const [auth, setAuth] = useState(false);
     const accessToken = localStorage.getItem('access_token');
 
     const { getWithToken } = useRequest();
@@ -30,8 +31,6 @@ export const AuthContextProvider = ({ children }) => {
             setAuth(true);
         }
     };
-
-    const [auth, setAuth] = useState(false);
 
     useEffect(() => {
         getAuth();
