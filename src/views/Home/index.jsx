@@ -117,6 +117,7 @@ function Home() {
                                     key={item?.id + index}
                                     name={item.name}
                                     img={item.images[0].url}
+                                    uri={item.uri}
                                 />
                             ))}
                     </GridItems>

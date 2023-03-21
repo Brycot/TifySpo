@@ -1,4 +1,3 @@
-
 import useRequest from './useRequest';
 
 export const useSpotify = () => {
@@ -22,13 +21,12 @@ export const useSpotify = () => {
                         ...state,
                         play: !state.play,
                     }));
-                    console.log('bien', response);
                 } else {
-                    console.log('mal', response);
+                    console.error('mal', response);
                     return;
                 }
             } catch (error) {
-                console.log(error);
+                console.error(error);
             }
         };
 
@@ -151,7 +149,7 @@ export const useSpotify = () => {
             try {
                 const response = await request();
                 if (response.status === 202) {
-                    console.log('ya');
+                    console.log('good');
                 } else {
                     console.log('Opps');
                     return;
