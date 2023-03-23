@@ -17,6 +17,9 @@ export const AppRoutes = () => {
                 <Route path="/library" element={<Library />} />
                 <Route path="/collection/tracks" element={<Liked />} />
                 <Route path="/collection/episodes" element={<Episodes />} />
+                <Route path="/artist/:id" element={<Episodes />} />
+                <Route path="/album/:id" element={<Episodes />} />
+                <Route path="/playlist/:id" element={<Episodes />} />
                 <Route path="/queue" element={<Queue />} />
                 <Route path="/callback" element={<Callback />} />
             </Route>
