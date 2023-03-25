@@ -25,7 +25,6 @@ import {
 
 function SideBar() {
     const { items } = useContext(PlaylistContext);
-
     return (
         <Aside>
             <WrapperLogo>
@@ -78,7 +77,12 @@ function SideBar() {
                 <ul>
                     {items &&
                         items.map(({ name, id }, index) => (
-                            <Playlist draggable="false" name={name} key={id} />
+                            <Playlist
+                                draggable="false"
+                                name={name}
+                                id={id}
+                                key={id}
+                            />
                         ))}
                 </ul>
             </PlaylistContainer>

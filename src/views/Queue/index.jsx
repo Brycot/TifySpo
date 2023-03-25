@@ -3,6 +3,7 @@ import axios from 'axios';
 import useRequest from '../../hooks/useRequest';
 import { Footer, SectionQueue, Title } from './Queue.styled';
 import { SearchSongItem } from '../../components/SearchSongItem/SearchSongItem';
+import { AlbumContainer } from '../Search/Search.styled';
 
 export const Queue = () => {
     const [currentlyPlaying, setCurrentlyPlaying] = useState({});
@@ -38,9 +39,10 @@ export const Queue = () => {
             </Title>
             <section>
                 <h5>Estás escuchando</h5>
-                {Object.keys(currentlyPlaying).length > 0 && (
-                    <SearchSongItem track={currentlyPlaying} />
-                )}
+                {currentlyPlaying &&
+                    Object.keys(currentlyPlaying).length > 0 && (
+                        <SearchSongItem track={currentlyPlaying} />
+                    )}
             </section>
             {queue.length > 1 && (
                 <section>

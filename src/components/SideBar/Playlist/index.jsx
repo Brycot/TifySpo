@@ -1,12 +1,13 @@
-import React from "react";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { Li } from "./Playlist.styled";
+import { Li } from './Playlist.styled';
 function Playlist({ name, id }) {
     return (
         <Li>
-            <a href="">
+            <Link to={`playlist/${id}`}>
                 <span>{name}</span>
-            </a>
+            </Link>
         </Li>
     );
 }
