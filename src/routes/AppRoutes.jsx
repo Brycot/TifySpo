@@ -5,6 +5,7 @@ import { Episodes } from '../views/Episodes';
 import Home from '../views/Home';
 import { Library } from '../views/Library';
 import { Liked } from '../views/Liked';
+import { Playlist } from '../views/Playlist';
 import { Queue } from '../views/Queue';
 import Search from '../views/Search/Search';
 
@@ -19,7 +20,7 @@ export const AppRoutes = () => {
                 <Route path="/collection/episodes" element={<Episodes />} />
                 <Route path="/artist/:id" element={<Episodes />} />
                 <Route path="/album/:id" element={<Episodes />} />
-                <Route path="/playlist/:id" element={<Episodes />} />
+                <Route path="/playlist/:id" element={<Playlist />} />
                 <Route path="/queue" element={<Queue />} />
                 <Route path="/callback" element={<Callback />} />
             </Route>
