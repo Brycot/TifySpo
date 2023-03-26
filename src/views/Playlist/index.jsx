@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { SearchSongItem } from '../../components/SearchSongItem/SearchSongItem';
 import useRequest from '../../hooks/useRequest';
 import {
     InfoPlaylist,
     PlaylistImage,
+    PlayListName,
     SectionPlaylist,
 } from './Playlist.styled';
 
@@ -27,6 +29,7 @@ export const Playlist = () => {
                 const { data } = await getPlaylist();
                 if (typeof data !== 'undefined') {
                     setPlaylist(data);
+                    console.log(data);
                 }
             } catch (error) {
                 console.log(error);
@@ -41,17 +44,21 @@ export const Playlist = () => {
                 <>
                     <InfoPlaylist>
                         <PlaylistImage src={playlist.images[0].url} alt="" />
-                        <div>
-                            <p>Playlist</p>
-                            <h1>{playlist.name}</h1>
-                            <div>
+                        <PlayListName>
+                            <p className="type">Playlist</p>
+                            <h1 className="name">{playlist.name}</h1>
+                            <div className="info">
                                 <p>{playlist.owner.display_name}</p>
                                 <p>{playlist.followers.total} me gusta</p>
                                 <p>{playlist.tracks.total} canciones</p>
                             </div>
-                        </div>
+                        </PlayListName>
                     </InfoPlaylist>
-                    <div></div>
+                    <div>
+                        {playlist.tracks.items.map(({ track }) => (
+                            <SearchSongItem key={track.id} track={track} />
+                        ))}
+                    </div>
                 </>
             )}
         </SectionPlaylist>

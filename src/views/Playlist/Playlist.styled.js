@@ -23,6 +23,33 @@ export const InfoPlaylist = styled.div`
     padding-bottom: 24px;
     position: relative;
 `;
+export const PlayListName = styled.div`
+    width: 100%;
+    height: 70%;
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 16px;
+    & .type {
+        font-size: 0.875rem;
+    }
+    & .name {
+        margin: 0.08em 0px 0.12em;
+        font-size: 4rem;
+        line-height: 90px;
+    }
+    & .info {
+        display: flex;
+    }
+    & .info p:nth-child(2)::before,
+    & .info p:nth-child(3)::before {
+        content: '•';
+        margin: 0px 4px;
+    }
+`;
+
 export const PlaylistImage = styled.img`
     height: 232px;
     min-width: 232px;
