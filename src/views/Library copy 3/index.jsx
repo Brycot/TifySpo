@@ -33,7 +33,7 @@ export const Library = () => {
         <>
             <LibrarySection>
                 <Title>
-                    <h2>Playlists</h2>
+                    <h1>Playlists</h1>
                 </Title>
                 <GridContainer>
                     {playLists?.map((playList) => (

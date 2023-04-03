@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Callback } from '../components/callback/callback';
 import Layout from '../components/layout';
+import { Artists } from '../views/Artists';
 import { Episodes } from '../views/Episodes';
 import Home from '../views/Home';
 import { Library } from '../views/Library';
@@ -16,8 +17,7 @@ export const AppRoutes = () => {
                 <Route path="/home" element={<Home />} />
                 <Route path="/search?/:querySearch" element={<Search />} />
                 <Route path="/collection/playlists" element={<Library />} />
-                <Route path="/collection/podcasts" element={<Library />} />
-                <Route path="/collection/artists" element={<Library />} />
+                <Route path="/collection/artists" element={<Artists />} />
                 <Route path="/collection/albums" element={<Library />} />
                 <Route path="/collection/tracks" element={<Liked />} />
                 <Route path="/collection/episodes" element={<Episodes />} />

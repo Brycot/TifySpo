@@ -64,14 +64,6 @@ function Topbar({ userInfo }) {
                         Playlists
                     </NavLink>
                     <NavLink
-                        to="/collection/podcasts"
-                        className={({ isActive }) =>
-                            isActive ? 'active' : 'inactive'
-                        }
-                    >
-                        Podcasts
-                    </NavLink>
-                    <NavLink
                         to="/collection/artists"
                         className={({ isActive }) =>
                             isActive ? 'active' : 'inactive'
