@@ -71,19 +71,22 @@ export const CardContainer = styled.div`
         touch-action: manipulation;
         user-select: none;
         vertical-align: middle;
-        bottom: 10px;
+        bottom: 0px;
         right: 10px;
         padding: 0px;
         min-inline-size: 0px;
         cursor: default;
         opacity: 0;
-        transition: all 0.3s ease;
+        transition: all 0.5s ease;
         z-index: 222;
     }
     &:hover button {
         opacity: 1;
         pointer-events: auto;
         position: absolute;
+        bottom: 10px;
+        right: 10px;
+        padding: 0px;
     }
     & .Card__Title {
         min-height: 62px;

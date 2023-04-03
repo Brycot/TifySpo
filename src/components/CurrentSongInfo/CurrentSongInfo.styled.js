@@ -39,6 +39,7 @@ export const TitleSong = styled.a`
     text-align: start;
     line-height: 14px;
     white-space: nowrap;
+    font-weight: 600;
     &:hover {
         color: #eeee;
         text-decoration: underline;
