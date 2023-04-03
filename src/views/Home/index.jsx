@@ -17,6 +17,7 @@ function Home() {
     const [topItems, setTopItems] = useState([]);
     const [topPlaylist, setTopPlaylist] = useState([]);
     const [recentPlayed, setRecentPlayed] = useState([]);
+    const [reccomendatios, setReccomendatios] = useState([]);
     const accessToken = localStorage.getItem('access_token');
     const { getWithToken, updateWithToken } = useRequest();
 
@@ -24,7 +25,7 @@ function Home() {
         const cancelSource = axios.CancelToken.source();
         async function makeRequest() {
             const reqUserTopItems = getWithToken(
-                'https://api.spotify.com/v1/me/top/tracks?limit=6',
+                'https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=6',
                 accessToken,
                 cancelSource
             );
@@ -60,6 +61,17 @@ function Home() {
                     setTopItems(_userTopItems.data.items);
                     setTopPlaylist(_userFeaturedPlaylist.data.playlists.items);
                     setRecentPlayed(_userRecentPlayed.data.items);
+                    const topTracksIds = _userTopItems.data.items
+                        .slice(0, 5)
+                        .map((s) => s.id)
+                        .join(',');
+                    const reqRecommendations = getWithToken(
+                        `https://api.spotify.com/v1/recommendations?limit=6&seed_tracks=${topTracksIds}`,
+                        accessToken,
+                        cancelSource
+                    );
+                    const userRecommendations = await reqRecommendations();
+                    setReccomendatios(userRecommendations.data.tracks);
                 }
             } catch (error) {
                 console.log(error);
@@ -87,6 +99,24 @@ function Home() {
                                 />
                             ))}
                     </Gridrecomendatios>
+                </Section>
+                <Section>
+                    <Title>
+                        <h2>Recomendado para ti</h2>
+                    </Title>
+                    <GridItems>
+                        {reccomendatios &&
+                            reccomendatios.map((item, index) => (
+                                <ItemCard
+                                    name={item?.name}
+                                    key={item?.id + index}
+                                    uri={item?.uri}
+                                    img={item?.album?.images[0]?.url}
+                                    artists={item?.artists}
+                                    track
+                                />
+                            ))}
+                    </GridItems>
                 </Section>
                 <Section>
                     <Title>
