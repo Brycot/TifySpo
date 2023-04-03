@@ -45,7 +45,7 @@ function SideBar() {
                 />
                 <PrimaryLink
                     icon={<LibraryIcon />}
-                    link={'/library'}
+                    link={'/collection/playlists'}
                     text="Tu Biblioteca"
                 />
             </ul>

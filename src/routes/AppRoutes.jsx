@@ -15,7 +15,10 @@ export const AppRoutes = () => {
             <Route path="/" element={<Layout />}>
                 <Route path="/home" element={<Home />} />
                 <Route path="/search?/:querySearch" element={<Search />} />
-                <Route path="/library" element={<Library />} />
+                <Route path="/collection/playlists" element={<Library />} />
+                <Route path="/collection/podcasts" element={<Library />} />
+                <Route path="/collection/artists" element={<Library />} />
+                <Route path="/collection/albums" element={<Library />} />
                 <Route path="/collection/tracks" element={<Liked />} />
                 <Route path="/collection/episodes" element={<Episodes />} />
                 <Route path="/artist/:id" element={<Episodes />} />

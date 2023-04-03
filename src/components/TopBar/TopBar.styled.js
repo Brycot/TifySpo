@@ -20,6 +20,39 @@ export const Header = styled.header`
     & .Input_Container {
         flex-grow: 1;
     }
+    & .Input_Container_Links {
+        flex-grow: 1;
+        display: flex;
+        justify-content: flex-start;
+    }
+    & .active {
+        font-weight: 600;
+        font-size: 0.9rem;
+        border-radius: 4px;
+        margin: 0 8px 0 0;
+        padding: 8px 16px;
+        color: #fff;
+        background-color: #333;
+        text-decoration: none;
+        display: inline-block;
+        position: relative;
+        transition: all 0.5s ease;
+    }
+    & .inactive {
+        font-weight: 600;
+        font-size: 0.9rem;
+        border-radius: 4px;
+        margin: 0 8px 0 0;
+        padding: 8px 16px;
+        color: #fff;
+        text-decoration: none;
+        display: inline-block;
+        position: relative;
+        transition: all 0.2s ease;
+    }
+    /* & .inactive:hover {
+        background-color: #333;
+    } */
     & .Input_Container form {
         position: relative;
         display: flex;

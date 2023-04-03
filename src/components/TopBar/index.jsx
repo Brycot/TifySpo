@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { ArrowBack, ArrowFront, OpenUserMenu } from '../../helpers/Icons';
 
 import { Header } from './TopBar.styled';
@@ -53,7 +53,42 @@ function Topbar({ userInfo }) {
                     </form>
                 </div>
             )}
-            {pathname === '/library' && <h4>My Library</h4>}
+            {pathname.includes('/collection') && (
+                <div className="Input_Container_Links">
+                    <NavLink
+                        to="/collection/playlists"
+                        className={({ isActive }) =>
+                            isActive ? 'active' : 'inactive'
+                        }
+                    >
+                        Playlists
+                    </NavLink>
+                    <NavLink
+                        to="/collection/podcasts"
+                        className={({ isActive }) =>
+                            isActive ? 'active' : 'inactive'
+                        }
+                    >
+                        Podcasts
+                    </NavLink>
+                    <NavLink
+                        to="/collection/artists"
+                        className={({ isActive }) =>
+                            isActive ? 'active' : 'inactive'
+                        }
+                    >
+                        Artistas
+                    </NavLink>
+                    <NavLink
+                        to="/collection/albums"
+                        className={({ isActive }) =>
+                            isActive ? 'active' : 'inactive'
+                        }
+                    >
+                        Álbumes
+                    </NavLink>
+                </div>
+            )}
             <button onClick={handleToggleMenu} className="btnUser">
                 {userInfo.images && (
                     <img

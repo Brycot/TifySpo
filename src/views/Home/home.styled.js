@@ -79,4 +79,7 @@ export const GridItems = styled.div`
     @media (min-width: 1700px) {
         --column-count: 7;
     }
+    @media (min-width: 1800px) {
+        --column-count: 8;
+    }
 `;
