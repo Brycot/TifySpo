@@ -31,9 +31,8 @@ const useAuth = () => {
                 Authorization: `Basic ${base64}`,
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: `code=${token}&redirect_uri=http://localhost:5173/callback&grant_type=authorization_code`,
+            body: `code=${token}&redirect_uri=https://tifyspo.vercel.app/callback&grant_type=authorization_code`,
         };
-        console.log('llegue hasta ca');
         try {
             const response = await fetch(
                 'https://accounts.spotify.com/api/token',
