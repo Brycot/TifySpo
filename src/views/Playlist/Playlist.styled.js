@@ -39,6 +39,10 @@ export const PlayListName = styled.div`
         margin: 0.08em 0px 0.12em;
         font-size: 4rem;
         line-height: 90px;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     & .info {
         display: flex;

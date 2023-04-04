@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { PlayListItem } from '../../components/PlayListItem';
 import { SearchSongItem } from '../../components/SearchSongItem/SearchSongItem';
 import useRequest from '../../hooks/useRequest';
 import {
@@ -29,7 +30,6 @@ export const Playlist = () => {
                 const { data } = await getPlaylist();
                 if (typeof data !== 'undefined') {
                     setPlaylist(data);
-                    console.log(data);
                 }
             } catch (error) {
                 console.log(error);
@@ -55,8 +55,12 @@ export const Playlist = () => {
                         </PlayListName>
                     </InfoPlaylist>
                     <div>
-                        {playlist.tracks.items.map(({ track }) => (
-                            <SearchSongItem key={track.id} track={track} />
+                        {playlist.tracks.items.map(({ track }, index) => (
+                            <PlayListItem
+                                key={track.id + index}
+                                track={track}
+                                index={index + 1}
+                            />
                         ))}
                     </div>
                 </>

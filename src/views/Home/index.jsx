@@ -17,7 +17,7 @@ function Home() {
     const [topItems, setTopItems] = useState([]);
     const [topPlaylist, setTopPlaylist] = useState([]);
     const [recentPlayed, setRecentPlayed] = useState([]);
-    const [reccomendatios, setReccomendatios] = useState([]);
+    const [recommendations, setRecommendations] = useState([]);
     const accessToken = localStorage.getItem('access_token');
     const { getWithToken, updateWithToken } = useRequest();
 
@@ -71,7 +71,7 @@ function Home() {
                         cancelSource
                     );
                     const userRecommendations = await reqRecommendations();
-                    setReccomendatios(userRecommendations.data.tracks);
+                    setRecommendations(userRecommendations.data.tracks);
                 }
             } catch (error) {
                 console.log(error);
@@ -105,8 +105,8 @@ function Home() {
                         <h2>Recomendado para ti</h2>
                     </Title>
                     <GridItems>
-                        {reccomendatios &&
-                            reccomendatios.map((item, index) => (
+                        {recommendations &&
+                            recommendations.map((item, index) => (
                                 <ItemCard
                                     name={item?.name}
                                     key={item?.id + index}
