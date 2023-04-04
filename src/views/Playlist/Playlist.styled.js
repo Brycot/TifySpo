@@ -76,7 +76,27 @@ export const Title = styled.div`
         font-weight: 700;
     }
 `;
-
+export const HeaderSongs = styled.div`
+    height: 36px;
+    display: grid;
+    grid-template-columns: [index] 16px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(
+            120px,
+            1fr
+        );
+    justify-items: start;
+    justify-items: start;
+    grid-gap: 16px;
+    padding: 0 16px;
+    color: #b3b3b3;
+    border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
+    & span {
+        font-size: 0.875rem;
+    }
+    & span:last-child {
+        justify-self: end;
+        margin-right: 36px;
+    }
+`;
 export const Footer = styled.section`
     width: 100%;
     height: 100px;
